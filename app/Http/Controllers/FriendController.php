@@ -2,32 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFriendRequest;
-use App\Http\Requests\UpdateFriendRequest;
 use App\Models\Friend;
+use Illuminate\Http\Request;
 
 class FriendController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     *
      */
     public function index()
     {
-        //
+//        abort(500);//読み込みに失敗した時のエラーを表示されるテスト
+//        return [];//TODOが0件の時のエラーメッセージのテスト
+        return Friend::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFriendRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,15 +31,7 @@ class FriendController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Friend $friend)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Friend $friend)
+    public function show(string $id)
     {
         //
     }
@@ -51,7 +39,7 @@ class FriendController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFriendRequest $request, Friend $friend)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +47,7 @@ class FriendController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Friend $friend)
+    public function destroy(string $id)
     {
         //
     }
