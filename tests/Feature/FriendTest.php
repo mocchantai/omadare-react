@@ -140,7 +140,6 @@ class FriendTest extends TestCase
             ]);
     }
 
-
     public function test_friend_destroy()
     {
         // テスト用のフレンドを作成
