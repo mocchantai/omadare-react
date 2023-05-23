@@ -63,7 +63,7 @@ class FriendTest extends TestCase
             ->assertStatus(422)//エラーが帰ってきているかをチェックするには422
             ->assertJsonFragment([//指定した配列が JSON データ内のどこかに部分的に一致するかどうかを確認
                 'errors' => [
-                    'friend_name' => ['validation.required']
+                    'friend_name' => ["名前は必ず指定してください。"]
                 ]
             ]);
     }
