@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFriendRequest;
+use App\Http\Requests\UpdateFriendRequest;
 use App\Models\Friend;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class FriendController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFriendRequest $request)
     {
         $friend = Friend::create($request->all());
 
@@ -45,7 +46,7 @@ class FriendController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Friend $friend)//DIでidに対応するFriendを取得
+    public function update(UpdateFriendRequest $request, Friend $friend)//DIでidに対応するFriendを取得
     {
         $friend->friend_name = $request->friend_name;
         $friend->memo = $request->memo;

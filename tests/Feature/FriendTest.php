@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Friend;
@@ -48,6 +47,25 @@ class FriendTest extends TestCase
         $response
             ->assertStatus(201)
             ->assertJsonFragment($data);
+    }
+
+    public function test_friend_store_if_friend_name_is_null_return_error():void
+    {
+        $data = [
+            'friend_name' => '',
+            'memo' => 'これはテストです。',
+            'user_id' => 1, // テスト用の適切なユーザーIDを設定する
+        ];
+
+        $response = $this->postJson('api/friends', $data);
+
+        $response
+            ->assertStatus(422)//エラーが帰ってきているかをチェックするには422
+            ->assertJsonFragment([//指定した配列が JSON データ内のどこかに部分的に一致するかどうかを確認
+                'errors' => [
+                    'friend_name' => ['validation.required']
+                ]
+            ]);
     }
 
     public function test_friend_update():void
