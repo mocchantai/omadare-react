@@ -17,6 +17,10 @@ class FriendTest extends TestCase
     public function test_friend_index(): void
     {
         $friends = Friend::factory()->count(10)->create();
-        dd($friends->toJson());
+//        dd($friends->toArray());
+
+        $response = $this->getJson('api/friends');
+
+        $response->assertJsonCount($friends->count());
     }
 }
