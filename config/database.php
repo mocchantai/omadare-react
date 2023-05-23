@@ -65,13 +65,11 @@ return [
 
         'testing' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
             'host' => env('DB_TEST_HOST', '127.0.0.1'),
             'port' => env('DB_TEST_PORT', '3306'),
             'database' => env('DB_TEST_DATABASE', 'your_db_test'),
             'username' => env('DB_TEST_USERNAME', 'your_db_test_user'),
             'password' => env('DB_TEST_PASSWORD', 'your_db_test_password'),
-            'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -82,7 +80,6 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
 
         'pgsql' => [
             'driver' => 'pgsql',
