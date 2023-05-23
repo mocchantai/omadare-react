@@ -23,4 +23,19 @@ class FriendTest extends TestCase
 
         $response->assertJsonCount($friends->count());
     }
+
+    public function test_friend_store():void
+    {
+        $data = [
+            'friend_name' => 'テストさん',
+            'memo' => 'これはテストです。'
+        ];
+
+        $response = $this->postJson('api/friends', $data);
+
+        $response
+            ->assertStatus(201)
+            ->assertJsonFragment($data);
+    }
 }
+
