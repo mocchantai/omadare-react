@@ -155,7 +155,5 @@ class FriendTest extends TestCase
 
         $this->assertEquals(9, $remainingFriendsCount);//削除後は9件になるはず
     }
-
-
 }
 
