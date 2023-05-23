@@ -6,10 +6,20 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Friend;
+use App\Models\User;
 
 class FriendTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        User::factory()->create([
+            'id' => 1, // id=1のユーザーを作成する
+        ]);
+    }
 
     /**
      * A basic test example.
@@ -28,8 +38,10 @@ class FriendTest extends TestCase
     {
         $data = [
             'friend_name' => 'テストさん',
-            'memo' => 'これはテストです。'
+            'memo' => 'これはテストです。',
+            'user_id' => 1, // テスト用の適切なユーザーIDを設定する
         ];
+
 
         $response = $this->postJson('api/friends', $data);
 

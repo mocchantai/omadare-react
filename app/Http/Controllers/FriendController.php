@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFriendRequest;
 use App\Models\Friend;
+use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
 
 class FriendController extends Controller
@@ -25,7 +27,11 @@ class FriendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $friend = Friend::create($request->all());
+
+        return $friend
+            ? response()->json($friend, 201)
+            : response()->json([], 500);
     }
 
     /**
