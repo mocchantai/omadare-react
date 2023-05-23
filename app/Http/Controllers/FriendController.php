@@ -58,8 +58,10 @@ class FriendController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Friend $friend)
     {
-        //
+        return $friend->delete()
+            ? response()->json($friend)
+            : response()->json([], 500);
     }
 }

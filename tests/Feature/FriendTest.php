@@ -65,5 +65,23 @@ class FriendTest extends TestCase
             ->assertJsonFragment($friend->toArray());
     }
 
+
+    public function test_friend_destroy()
+    {
+        // テスト用のフレンドを作成
+        $friends = Friend::factory()->count(10)->create();
+        $friendToDelete = $friends->first();
+
+        // フレンドを削除
+        $response = $this->deleteJson("api/friends/{$friendToDelete->id}");
+        $response->assertStatus(200);//削除が成功したかを確認
+
+        // 削除後のフレンド数を確認
+        $remainingFriendsCount = Friend::count();
+
+        $this->assertEquals(9, $remainingFriendsCount);//削除後は9件になるはず
+    }
+
+
 }
 
