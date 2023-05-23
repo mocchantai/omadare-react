@@ -33,7 +33,7 @@ class FriendTest extends TestCase
         $response->assertJsonCount($friends->count());
     }
 
-    public function test_friend_store():void
+    public function test_friend_store(): void
     {
         $data = [
             'friend_name' => 'テストさん',
@@ -49,7 +49,7 @@ class FriendTest extends TestCase
             ->assertJsonFragment($data);
     }
 
-    public function test_friend_store_if_friend_name_is_null_return_error():void
+    public function test_friend_store_if_friend_name_is_null_return_error(): void
     {
         $data = [
             'friend_name' => '',
@@ -61,10 +61,25 @@ class FriendTest extends TestCase
 
         $response
             ->assertStatus(422)//エラーが帰ってきているかをチェックするには422
-            ->assertJsonValidationErrors(['friend_name' =>"名前は必ず指定してください。"]);
+            ->assertJsonValidationErrors(['friend_name' => "名前は必ず指定してください。"]);
     }
 
-    public function test_friend_update():void
+    public function test_friend_store_if_friend_name_is_longer_than_31_return_error(): void
+    {
+        $data = [
+            'friend_name' => str_repeat('あ', 31),
+            'memo' => 'これはテストです。',
+            'user_id' => 1, // テスト用の適切なユーザーIDを設定する
+        ];
+
+        $response = $this->postJson('api/friends', $data);
+
+        $response
+            ->assertStatus(422)//エラーが帰ってきているかをチェックするには422
+            ->assertJsonValidationErrors(['friend_name' => "名前は、30文字以下で指定してください。"]);
+    }
+
+    public function test_friend_update(): void
     {
         $friend = Friend::factory()->create();
 
@@ -77,6 +92,52 @@ class FriendTest extends TestCase
         $response
             ->assertStatus(200)
             ->assertJsonFragment($friend->toArray());
+    }
+
+    public function test_friend_update_if_friend_name_is_null_return_error(): void
+    {
+        $friend = Friend::factory()->create();
+
+        $friend->friend_name = '';
+        $friend->memo = 'これはテスト更新です';
+
+        $response = $this->patchJson("api/friends/{$friend->id}", $friend->toArray());
+//        dd($response);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['friend_name' => '名前は必ず指定してください']);
+    }
+
+    public function test_friend_update_if_friend_name_is_longer_than_256_return_error(): void
+    {
+        $friend = Friend::factory()->create();
+
+        $friend->friend_name = str_repeat('あ', 256);
+        $friend->memo = 'これはテスト更新です';
+
+        $response = $this->patchJson("api/friends/{$friend->id}", $friend->toArray());
+//        dd($response);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['friend_name' => '名前は、255文字以下で指定してください。']);
+    }
+
+    public function test_friend_update_if_memo_is_null_no_problem_because_memo_is_nullable(): void
+    {
+        $friend = Friend::factory()->create();
+
+        $friend->friend_name = 'テスト更新さん';
+        $friend->memo = '';
+
+        $response = $this->patchJson("api/friends/{$friend->id}", $friend->toArray());
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                'memo' => null
+            ]);
     }
 
 

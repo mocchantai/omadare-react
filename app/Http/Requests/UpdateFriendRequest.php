@@ -22,7 +22,7 @@ class UpdateFriendRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'friend_name' => 'required'
+            'friend_name' => 'required|max:255'
         ];
     }
 }

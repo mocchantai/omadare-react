@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('friend_name');
             $table->foreignId('user_id')->constrained('users');
-            $table->string('memo');
+            $table->string('memo')->nullable();
             $table->timestamps();
         });
     }
