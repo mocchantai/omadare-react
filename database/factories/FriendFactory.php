@@ -27,7 +27,7 @@ class FriendFactory extends Factory
     {
         return [
             'friend_name' => $this->faker->name(),
-            'memo' => $this->faker->realText(),
+            'memo' => $this->faker->realText(10),
             'user_id' => User::factory(), // ランダムなユーザーのIDを指定
         ];
     }
