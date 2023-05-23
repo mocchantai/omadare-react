@@ -49,5 +49,21 @@ class FriendTest extends TestCase
             ->assertStatus(201)
             ->assertJsonFragment($data);
     }
+
+    public function test_friend_update():void
+    {
+        $friend = Friend::factory()->create();
+
+        $friend->friend_name = 'テスト更新さん';
+        $friend->memo = 'これはテスト更新です';
+
+        $response = $this->patchJson("api/friends/{$friend->id}", $friend->toArray());
+
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonFragment($friend->toArray());
+    }
+
 }
 
