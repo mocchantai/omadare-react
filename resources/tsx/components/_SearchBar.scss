@@ -1,0 +1,25 @@
+@use '../reset';
+
+$primary_color: #FF9E9E;
+
+.search_bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: $primary_color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__textbox {
+        height: 20px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    &__icon {
+        width: 20px;
+        height: 20px;
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
