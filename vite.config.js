@@ -9,7 +9,7 @@ export default defineConfig({
 
             input: [
                 'resources/sass/app.scss',
-                'resources/ts/index.tsx'
+                'resources/tsx/index.tsx'
             ]
         }),
         react(),

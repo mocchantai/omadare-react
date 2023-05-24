@@ -7,7 +7,7 @@
         <title>おまだれ？</title>
 
         @viteReactRefresh
-        @vite(['resources/sass/app.scss', 'resources/ts/index.tsx'])
+        @vite(['resources/sass/app.scss', 'resources/tsx/index.tsx'])
     </head>
     <body>
         <div id="root"></div>
