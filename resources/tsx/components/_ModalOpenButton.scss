@@ -1,0 +1,14 @@
+@use '../reset';
+
+$primary_color: #FF9E9E;
+
+.modal_open_button {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}
