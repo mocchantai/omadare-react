@@ -1,0 +1,13 @@
+@use '../reset';
+
+$primary_color: #FF9E9E;
+
+.friend_card {
+    display: block;
+    width: 600px;
+    border-radius: 8px;
+    margin: 0 auto 4px auto;
+    padding: 4px;
+    background-color: $primary_color;
+
+}
