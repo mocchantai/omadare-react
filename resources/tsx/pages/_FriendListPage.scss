@@ -2,6 +2,11 @@
 
 $primary_color: #FF9E9E;
 
+//スクロール禁止ようクラス
+.scroll-lock {
+    overflow: hidden;
+}
+
 .whole_page {
     background-color: $primary_color;
 }

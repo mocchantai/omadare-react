@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal,} from "../components/index";
 import "./_FriendListPage.scss";
 
@@ -10,11 +10,20 @@ const FriendListPage = () => {
         setIsModalOpen(!isModalOpen);
     };
 
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.classList.add('scroll-lock');
+        } else {
+            document.body.classList.remove('scroll-lock');
+
+        }
+    }, [isModalOpen])
+
     return(
         <div className="whole_page">
             <Header />
             <SearchBar />
-            {/*<FriendList />*/}
+            <FriendList />
             {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
             {/*<FriendEditModal />*/}
             {/*<button onClick={toggleModal} >OpenModal</button>*/}
