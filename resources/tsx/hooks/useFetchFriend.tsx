@@ -3,7 +3,7 @@ import {fetchFriends} from "../services";
 import {FriendType} from "../types";
 
 const useFetchFriend = () => {
-    const [data, setData] = useState<FriendType>([]);
+    const [data, setData] = useState<FriendType[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -11,11 +11,11 @@ const useFetchFriend = () => {
             try {
                 const response: FriendType[] = await fetchFriends();
                 setData(response);
-                setIsLoading(false)
+                setIsLoading(false);
             } catch (error) {
                 console.error("Failed to fetch friends", error);
                 setIsLoading(false)
-                throw new Error("Failed to fetch friends")
+                throw new Error("Failed to fetch friends");
             }
         }
 
@@ -23,6 +23,6 @@ const useFetchFriend = () => {
     }, [])
 
     return { data, isLoading };
-}
+};
 
 export default useFetchFriend;
