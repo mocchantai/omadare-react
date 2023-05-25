@@ -7,11 +7,15 @@ type FriendCreateModalProps = {
 
 
 const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
-
+    const handleOverlayClick = (event: React.MouseEvent) => {
+        if ((event.target as HTMLElement).classList.contains('overlay')) {
+            onClose();
+        }
+    };
 
     return (
         <div className="modal">
-            <div className="overlay"></div>
+            <div className="overlay" onClick={handleOverlayClick}></div>
                 <div className="modal_container">
                     <form action="" className="create_form">
                         <label htmlFor="friend_name">名前</label>
