@@ -4,6 +4,9 @@ import "./_FriendListPage.scss";
 
 
 const FriendListPage = () => {
+
+
+
     return(
         <div className="whole_page">
             <Header />
