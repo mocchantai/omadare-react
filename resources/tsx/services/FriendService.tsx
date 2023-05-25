@@ -8,8 +8,8 @@ const fetchFriends = async (): Promise<FriendType[]> => {
         const response: AxiosResponse<FriendType[]> = await axios.get('api/friends');
         return  response.data;
     } catch (error) {
-        console.error("failed to fetch friends", error);
-        throw new Error("failed to fetch friends");
+        console.error("Failed to fetch friends", error);
+        throw new Error("Failed to fetch friends");
     }
 }
 
