@@ -1,0 +1,43 @@
+.modal {
+    display: none;
+    .layer {
+        background-color: #9ca3af;
+        opacity: 0.4;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        .modal_container {
+            width: 600px;
+            height: 1000px;
+            margin: 0 auto;
+            .create_form {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                &__friend_name {
+                    border: none;
+                    height: 20px;
+                    margin-bottom: 8px;
+                }
+                &__memo {
+                    border: none;
+                    margin-bottom: 8px;
+
+                }
+                &__submit_button {
+                    background-color: blue;
+                    width: 40%;
+                    margin: 0 auto 8px auto;
+
+                }
+                &__close_button {
+                    background-color: blue;
+                    width: 40%;
+                    margin: 0 auto 8px auto;
+
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, SearchBar, FriendList, ModalOpenButton} from "../components/index";
+import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal,} from "../components/index";
 import "./_FriendListPage.scss";
 
 
@@ -8,7 +8,9 @@ const FriendListPage = () => {
         <div className="whole_page">
             <Header />
             <SearchBar />
-            <FriendList />
+            {/*<FriendList />*/}
+            <FriendCreateModal />
+            {/*<FriendEditModal />*/}
             <ModalOpenButton />
         </div>
     )

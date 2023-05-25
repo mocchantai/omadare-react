@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import ModalOpenButton from "./ModalOpenButton";
 import FriendCard from "./FriendCard";
 import FriendList from "./FriendList";
+import FriendCreateModal from "./FriendCreateModal";
 
 export {
     Header,
@@ -10,4 +11,5 @@ export {
     FriendCard,
     FriendList,
     ModalOpenButton,
+    FriendCreateModal
 }
