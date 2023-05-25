@@ -1,9 +1,11 @@
 import React from 'react';
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+import {FriendType} from "../types/index";
 
-const fetchFriends = async () => {
+
+const fetchFriends = async (): Promise<FriendType[]> => {
     try {
-        const response = await axios.get('api/friends');
+        const response: AxiosResponse<FriendType[]> = await axios.get('api/friends');
         return  response.data;
     } catch (error) {
         console.error("failed to fetch friends", error);
