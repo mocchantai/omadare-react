@@ -1,5 +1,7 @@
-import {fetchFriends} from "./FriendService";
+import {fetchFriends, createFriend} from "./FriendService";
+
 
 export {
-    fetchFriends
+    fetchFriends,
+    createFriend
 }
