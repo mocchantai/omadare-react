@@ -15,9 +15,10 @@ const FriendListPage = () => {
             <Header />
             <SearchBar />
             {/*<FriendList />*/}
-            {isModalOpen && <FriendCreateModal />}
+            {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
             {/*<FriendEditModal />*/}
-            <ModalOpenButton onClick={toggleModal} />
+            {/*<button onClick={toggleModal} >OpenModal</button>*/}
+            <ModalOpenButton onOpen={toggleModal} />
         </div>
     );
 };

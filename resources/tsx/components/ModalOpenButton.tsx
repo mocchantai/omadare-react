@@ -3,18 +3,28 @@ import './_ModalOpenButton.scss';
 
 
 type ModalOpenButtonProps = {
-    onClick: () => void;
+    onOpen: () => void;
 };
 
-const ModalOpenButton = ({ onClick }: ModalOpenButtonProps) => {
+const ModalOpenButton = ({ onOpen }: ModalOpenButtonProps) => {
     return (
         <>
-            <a className="modal_open_button" href="#" onClick={onClick}>
+            <a className="modal_open_button" href="#" onClick={onOpen}>
                 <img src="/images/plus_icon.svg" alt="" />
             </a>
         </>
     );
 };
+
+// const ModalOpenButton = ({ onClick }: ModalOpenButtonProps) => {
+//     return (
+//         <>
+//             <a className="modal_open_button" href="#" onClick={onClick}>
+//                 <img src="/images/plus_icon.svg" alt="" />
+//             </a>
+//         </>
+//     );
+// };
 
 
 
