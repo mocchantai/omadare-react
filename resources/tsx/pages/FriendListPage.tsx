@@ -1,11 +1,11 @@
 import React from 'react';
 import {Header, SearchBar, FriendList, ModalOpenButton} from "../components/index";
-
+import "./_FriendListPage.scss";
 
 
 const FriendListPage = () => {
     return(
-        <div>
+        <div className="whole_page">
             <Header />
             <SearchBar />
             <FriendList />

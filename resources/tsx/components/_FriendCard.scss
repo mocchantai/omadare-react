@@ -1,13 +1,15 @@
 @use '../reset';
 
 $primary_color: #FF9E9E;
+$primary_color_blur: #ffd2d2;
 
 .friend_card {
     display: block;
-    width: 600px;
+    width: 100%;
     border-radius: 8px;
     margin: 0 auto 4px auto;
     padding: 4px;
-    background-color: $primary_color;
-
+    background-color: $primary_color_blur;
+    &__name {}
+    &__memo {}
 }

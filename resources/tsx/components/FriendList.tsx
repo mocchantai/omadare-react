@@ -2,6 +2,7 @@ import React from 'react';
 import {FriendCard} from './index';
 import {useFetchFriend} from "../hooks/index";
 import {FriendType} from "../types/index";
+import "./_FriendList.scss";
 
 const FriendList = () => {
     const {data, isLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
@@ -11,8 +12,7 @@ const FriendList = () => {
     }
 
     return (
-        <div>
-            <h2>Friend List</h2>
+        <div className="friend_list_container">
             {data.map((friend) => (
                 <FriendCard
                     key={friend.id}
@@ -21,6 +21,7 @@ const FriendList = () => {
                 />
             ))}
         </div>
+
     );
 };
 
