@@ -7,8 +7,13 @@ import "./_FriendList.scss";
 const FriendList = () => {
     const {data, isLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
 
+
     if (isLoading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="friend_list_loading">
+                <div className="loading_spinner"></div>
+            </div>
+        );
     }
 
     return (

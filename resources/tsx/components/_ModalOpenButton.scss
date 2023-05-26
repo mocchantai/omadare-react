@@ -1,4 +1,5 @@
 $primary_color: #FF9E9E;
+$button_icon_color: #FFF; // ボタンのアイコンの色
 
 .modal_open_button {
     display: block;
@@ -23,5 +24,6 @@ $primary_color: #FF9E9E;
         height: 30px;
         display: block;
         margin: auto;
+        fill: $button_icon_color; // アイコンの色を指定
     }
 }

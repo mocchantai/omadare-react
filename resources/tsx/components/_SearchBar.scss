@@ -3,6 +3,7 @@ $search_bar_background: lighten($primary_color, 20%);
 
 .search_bar {
     max-width: 1200px;
+    width: 90%;
     margin: 0 auto 16px auto;
     background-color: $search_bar_background;
     display: flex;
