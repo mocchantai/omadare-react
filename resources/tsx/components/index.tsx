@@ -4,6 +4,8 @@ import ModalOpenButton from "./ModalOpenButton";
 import FriendCard from "./FriendCard";
 import FriendList from "./FriendList";
 import FriendCreateModal from "./FriendCreateModal";
+import Overlay from "./Overlay";
+import FriendCreateForm from "./FriendCreateForm";
 
 export {
     Header,
@@ -11,5 +13,7 @@ export {
     FriendCard,
     FriendList,
     ModalOpenButton,
-    FriendCreateModal
+    FriendCreateModal,
+    Overlay,
+    FriendCreateForm
 }
