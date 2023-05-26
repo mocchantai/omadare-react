@@ -6,12 +6,16 @@ type ModalOpenButtonProps = {
     onOpen: () => void;
 };
 
+
 const ModalOpenButton = ({ onOpen }: ModalOpenButtonProps) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        onOpen();
+    };
+
     return (
         <>
-            <a className="modal_open_button" href="#" onClick={onOpen}>
-                <img src="/images/plus_icon.svg" alt="" />
-            </a>
+            <button className="modal_open_button" onClick={handleClick} >開く</button>
         </>
     );
 };

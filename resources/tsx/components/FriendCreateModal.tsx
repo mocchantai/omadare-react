@@ -25,10 +25,16 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
         setMemo("")
         onClose();
     }
-    const handleOverlayClick = (event: React.MouseEvent) => {
-        if ((event.target as HTMLElement).classList.contains('overlay')) {
+    const handleOverlayClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        if ((e.target as HTMLElement).classList.contains('overlay')) {
             onClose();
         }
+    };
+
+    const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        onClose();
     };
 
     return (
@@ -41,7 +47,7 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
                         <label htmlFor="memo">メモ</label>
                         <textarea onChange={(e) => setMemo(e.target.value)} value={memo} name="memo" id="" className="create_form__memo"></textarea>
                         <button className="create_form__submit_button">送信</button>
-                        <button className="create_form__close_button" onClick={onClose}>閉じる</button>
+                        <button className="create_form__close_button" onClick={handleClose}>閉じる</button>
                     </form>
                 </div>
         </div>
