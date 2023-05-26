@@ -9,12 +9,17 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__logo">
-                <img src="/images/secondary_logo.png" alt="ロゴ"/>
+                <img src="/images/secondary_logo.png" alt="ロゴ" />
             </div>
-            <div className="header__nav">
-                <Link to='/'>ログアウト</Link>
-            </div>
+            <nav className="header__nav">
+                <ul>
+                    <li>
+                        <a href="/">ログアウト</a>
+                    </li>
+                </ul>
+            </nav>
         </header>
+
     )
 }
 

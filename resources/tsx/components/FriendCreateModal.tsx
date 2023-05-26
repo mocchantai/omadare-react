@@ -10,7 +10,6 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
     const [memo, setMemo] = useState("");
     const {data, isLoading, createFriendData} = useStoreFriend();
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData: FriendType = {friend_name: friendName, memo: memo, user_id: 1};//とりあえずid,use_id1にする
@@ -20,6 +19,7 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
         setMemo("")
         onClose();
     }
+
     const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
         e.preventDefault();
         const target = e.target as HTMLElement;
@@ -27,7 +27,6 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
             onClose();
         }
     };
-
 
     const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

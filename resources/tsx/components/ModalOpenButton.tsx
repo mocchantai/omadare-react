@@ -15,7 +15,7 @@ const ModalOpenButton = ({ onOpen }: ModalOpenButtonProps) => {
 
     return (
         <>
-            <button className="modal_open_button" onClick={handleClick} >開く</button>
+            <button className="modal_open_button" onClick={handleClick} ></button>
         </>
     );
 };

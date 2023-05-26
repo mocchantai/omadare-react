@@ -1,5 +1,6 @@
 import {FriendCreateFormProps} from "../types";
 import React from "react";
+import "./_FriendCreateForm.scss";
 
 const FriendCreateForm = (props: FriendCreateFormProps) => {
     return (
