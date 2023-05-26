@@ -9,6 +9,10 @@ type FriendCreateModalProps = {
 };
 
 
+function Overlay(props: { onClick: (e: React.MouseEvent) => void }) {
+    return <div className="overlay" onClick={props.onClick}></div>;
+}
+
 const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
@@ -39,17 +43,19 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
 
     return (
         <div className="modal">
-            <div className="overlay" onClick={handleOverlayClick}></div>
-                <div className="modal_container">
-                    <form onSubmit={handleSubmit} className="create_form">
-                        <label htmlFor="friend_name">名前</label>
-                        <input onChange={(e) => setFriendName(e.target.value)} value={friendName} name="friend_name" type="text" className="create_form__friend_name"/>
-                        <label htmlFor="memo">メモ</label>
-                        <textarea onChange={(e) => setMemo(e.target.value)} value={memo} name="memo" id="" className="create_form__memo"></textarea>
-                        <button className="create_form__submit_button">送信</button>
-                        <button className="create_form__close_button" onClick={handleClose}>閉じる</button>
-                    </form>
-                </div>
+            <Overlay onClick={handleOverlayClick}/>
+            <div className="modal_container">
+                <form onSubmit={handleSubmit} className="create_form">
+                    <label htmlFor="friend_name">名前</label>
+                    <input onChange={(e) => setFriendName(e.target.value)} value={friendName} name="friend_name"
+                           type="text" className="create_form__friend_name"/>
+                    <label htmlFor="memo">メモ</label>
+                    <textarea onChange={(e) => setMemo(e.target.value)} value={memo} name="memo" id=""
+                              className="create_form__memo"></textarea>
+                    <button className="create_form__submit_button">送信</button>
+                    <button className="create_form__close_button" onClick={handleClose}>閉じる</button>
+                </form>
+            </div>
         </div>
     )
 }
