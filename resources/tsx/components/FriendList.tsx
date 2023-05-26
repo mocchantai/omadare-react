@@ -13,9 +13,9 @@ const FriendList = () => {
 
     return (
         <div className="friend_list_container">
-            {data.map((friend) => (
+            {data.map((friend,id) => (
                 <FriendCard
-                    key={friend.id}
+                    key={id}
                     friend_name={friend.friend_name}
                     memo={friend.memo}
                 />

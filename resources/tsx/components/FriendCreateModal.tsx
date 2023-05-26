@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import "./_FriendCreateModal.scss";
 import useStoreFriend from "../hooks/useStoreFriend";
 import {FriendType} from "../types";
+import {FriendListPage} from "../pages/index";
 
 type FriendCreateModalProps = {
     onClose: () => void;
@@ -11,17 +12,18 @@ type FriendCreateModalProps = {
 const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
-    // const [userId, setUserId] = useState(0);
     const {data, isLoading, createFriendData} = useStoreFriend();
+    const FriendList = FriendListPage();
 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData: FriendType = {friend_name:friendName, memo: memo, id: 1, user_id: 1};//とりあえずid,use_id1にする
+        const formData: FriendType = {friend_name:friendName, memo: memo, user_id: 1};//とりあえずid,use_id1にする
         console.log(formData);
         await createFriendData(formData);
         setFriendName("");
         setMemo("")
+        onClose();
     }
     const handleOverlayClick = (event: React.MouseEvent) => {
         if ((event.target as HTMLElement).classList.contains('overlay')) {
