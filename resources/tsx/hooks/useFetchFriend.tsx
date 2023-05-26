@@ -18,7 +18,6 @@ const useFetchFriend = () => {
                 throw new Error("Failed to fetch friends");
             }
         }
-
         fetchData();
     }, [])
 
