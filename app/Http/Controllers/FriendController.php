@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateFriendRequest;
 use App\Models\Friend;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
+use Symfony\Component\String\Inflector\FrenchInflector;
+use function MongoDB\BSON\toJSON;
 
 class FriendController extends Controller
 {
@@ -65,4 +67,36 @@ class FriendController extends Controller
             ? response()->json($friend)
             : response()->json([], 500);
     }
+
+//    public function search(Request $request)
+//    {
+//        $keyword = $request->input('keyword');
+//        $query = Friend::query();
+//
+//        if (!empty($keyword)) {
+//            $query->where('friend_name', 'LIKE','%'.$keyword.'%' );
+//        }
+//
+//        $friends = $query->get();
+//
+//        return $friends->isNotEmpty()
+//            ? response()->json($friends)
+//            : response()->json([], 404);
+//
+//    }
+
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $friends = Friend::where('friend_name','like', '%' .$keyword. '%')
+            ->OrWhere('memo', 'like', '%' .$keyword. '%')
+            ->get();
+
+        return $friends->isNotEmpty()
+            ? response()->json($friends)
+            : response()->json([], 404);
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Friend;
@@ -155,5 +156,65 @@ class FriendTest extends TestCase
 
         $this->assertEquals(9, $remainingFriendsCount);//削除後は9件になるはず
     }
+
+//    public function test_friend_search()
+//    {
+//        $friends = Friend::factory()->count(15)->state(new Sequence(
+//            ['friend_name' => '本村'],
+//            ['friend_name' => '佐々木'],
+//            ['friend_name' => '三宅'],
+//        ))->create();
+//
+//
+//        $filter_friend = $friends->filter(function ($friend) {
+//            return $friend->friend_name === '本村';
+//        });
+//
+////        dd($filter_friend->ToArray());
+//
+//        $keyword = '本村';
+//
+//        $response = $this->getJson("api/friends/search", ['keyword' => $keyword]);
+////        $response = $this->getJson("api/friends?keyword={$keyword}");
+//
+//        $response->assertStatus(200);
+//        $friends = $response->json();
+//
+//        dd($friends); // 友達の情報を表示
+//
+//    }
+
+
+    public function test_friend_search()
+    {
+        $friends = Friend::factory()->count(15)->state(new Sequence(
+            ['friend_name' => '本村'],
+            ['friend_name' => '佐々木'],
+            ['friend_name' => '三宅'],
+        ))->create();
+
+        $keyword = "本";
+
+        // APIエンドポイントにリクエスト
+        $response = $this->postJson("api/friends/search", ['keyword' => $keyword]);
+
+        // レスポンスのステータスコードを確認
+        $response->assertStatus(200);
+
+        // レスポンスのJSONを取得
+        $responseData = $response->json();
+
+
+        // filter_friendとレスポンスの配列が一致しているかテスト
+        $filter_friend = $friends->filter(function ($friend) use ($keyword) {
+            return stripos($friend->friend_name, $keyword) !== false;
+        });
+
+//        $this->assertEquals($filter_friend->toArray(), $responseData);
+//        $this->assertTrue($filter_friend->values()->toArray() === $responseData);
+        $this->assertTrue($filter_friend->pluck('friend_name')->toArray() === array_column($responseData, 'friend_name'));
+
+    }
+
 }
 

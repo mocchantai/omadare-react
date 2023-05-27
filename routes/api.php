@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/friends', FriendController::class);
+Route::post('/friends/search', [FriendController::class, 'search']);
