@@ -1,12 +1,17 @@
 import React from 'react';
 import {FriendCard} from './index';
 import {useFetchFriend} from "../hooks/index";
-import {FriendType} from "../types/index";
 import "./_FriendList.scss";
+import {FriendType, FriendListPropsType} from "../types";
 
-const FriendList = () => {
-    const {data, isLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
 
+
+const FriendList = ({keyword, searchData, isSearchLoading}: FriendListPropsType) => {
+    const {data: fetchedData, isLoading: isFetchLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
+
+
+    const friends = keyword ? searchData : fetchedData;
+    const isLoading = keyword ? isSearchLoading : isFetchLoading;
 
     if (isLoading) {
         return (
@@ -18,7 +23,7 @@ const FriendList = () => {
 
     return (
         <div className="friend_list_container">
-            {data.map((friend,id) => (
+            {friends.map((friend,id) => (
                 <FriendCard
                     key={id}
                     friend_name={friend.friend_name}

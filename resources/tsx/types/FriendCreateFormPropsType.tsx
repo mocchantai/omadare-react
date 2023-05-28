@@ -1,5 +1,5 @@
-type FriendCreateModalProps = {
+type FriendCreateFormPropsType = {
     onClose: () => void;
 };
 
-export default FriendCreateModalProps;
+export default FriendCreateFormPropsType;

@@ -1,10 +1,13 @@
 import FriendType from "./FriendType";
-import FriendCreateFormProps from "./FriendCreateModalPropsType";
-import FriendCreateModalProps from "./FriendCreateFormPropsType";
+import FriendCreateModalPropsType from "./FriendCreateModalPropsType";
+import SearchBarPropsType from "./SearchBarPropsType";
+import FriendListPropsType from "./FriendListPropsType";
+import FriendCreateFormPropsType from "./FriendCreateFormPropsType";
 
 export {
     FriendType,
-    FriendCreateFormProps,
-    FriendCreateModalProps
-
+    FriendCreateModalPropsType,
+    FriendCreateFormPropsType,
+    SearchBarPropsType,
+    FriendListPropsType
 }

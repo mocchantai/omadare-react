@@ -14,12 +14,8 @@ const FriendListPage = () => {
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        // setKeyword(request.value);
-        if (data) {
-            console.log(data);
-        } else {
-            console.log("data is empty")
-        }
+
+        console.log(data);
         console.log(keyword);
         setKeyword("");
     }
@@ -50,7 +46,7 @@ const FriendListPage = () => {
         <div className="whole_page">
             <Header />
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
-            <FriendList />
+            <FriendList keyword={keyword} searchData={data} isSearchLoading={isLoading}/>
             {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
             {/*<FriendEditModal />*/}
             {/*<button onClick={toggleModal} >OpenModal</button>*/}

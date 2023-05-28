@@ -33,6 +33,8 @@ const searchFriend = async (keyword: string): Promise<FriendType[]> => {
     } catch (error) {
         console.error("Failed to search friends", error);
         throw new Error("Failed to search friends");
+        // console.log("検索結果0です")
+
     }
 }
 

@@ -1,16 +1,10 @@
 import React, {useState} from 'react';
 import './_SearchBar.scss';
 import {useSearchFriend} from "../hooks";
-
-type SearchBarProps = {
-    onSearch: (e: React.FormEvent<HTMLFormElement>) => void;
-    keyword: string;
-    setKeyword: React.Dispatch<React.SetStateAction<string>>;
-}
+import {SearchBarPropsType} from "../types/index";
 
 
-const SearchBar = ({onSearch, keyword, setKeyword}: SearchBarProps) => {
-
+const SearchBar = ({onSearch, keyword, setKeyword}: SearchBarPropsType) => {
 
     return (
         <div className="search-bar">
