@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import "./_FriendCreateModal.scss";
 import useStoreFriend from "../hooks/useStoreFriend";
 import {FriendType} from "../types";
-import {FriendCreateFormProps, FriendCreateModalProps} from "../types/index";
+import {FriendCreateFormPropsType, FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
 
-const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
+const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
     const {data, isLoading, createFriendData} = useStoreFriend();
@@ -39,9 +39,9 @@ const FriendCreateModal = ({onClose}: FriendCreateModalProps) => {
             <div className="modal_container">
                 <FriendCreateForm
                     onSubmit={handleSubmit}
-                    onChange={(e) => setFriendName(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFriendName(e.target.value)}
                     value={friendName}
-                    onChange1={(e) => setMemo(e.target.value)}
+                    onChange1={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMemo(e.target.value)}
                     value1={memo}
                     onClick={handleClose}
                 />
