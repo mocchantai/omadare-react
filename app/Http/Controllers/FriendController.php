@@ -68,23 +68,6 @@ class FriendController extends Controller
             : response()->json([], 500);
     }
 
-//    public function search(Request $request)
-//    {
-//        $keyword = $request->input('keyword');
-//        $query = Friend::query();
-//
-//        if (!empty($keyword)) {
-//            $query->where('friend_name', 'LIKE','%'.$keyword.'%' );
-//        }
-//
-//        $friends = $query->get();
-//
-//        return $friends->isNotEmpty()
-//            ? response()->json($friends)
-//            : response()->json([], 404);
-//
-//    }
-
 
     public function search(Request $request)
     {

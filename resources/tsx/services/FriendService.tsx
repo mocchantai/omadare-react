@@ -25,9 +25,10 @@ const storeFriend = async (formData: FriendType): Promise<FriendType> => {
 
 const searchFriend = async (keyword: string): Promise<FriendType[]> => {
     try {
-        const response: AxiosResponse<FriendType[]> = await axios.get<FriendType[]>('api/friends/search', {
-            params: { keyword },
+        const response: AxiosResponse<FriendType[]> = await axios.post<FriendType[]>('api/friends/search', {
+            keyword: keyword,
         });
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error("Failed to search friends", error);

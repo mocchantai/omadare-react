@@ -193,7 +193,9 @@ class FriendTest extends TestCase
             ['friend_name' => '三宅'],
         ))->create();
 
-        $keyword = "本";
+        $friends = Friend::factory()->count(1000)->create();
+
+        $keyword = "吉";
 
         // APIエンドポイントにリクエスト
         $response = $this->postJson("api/friends/search", ['keyword' => $keyword]);
@@ -203,6 +205,7 @@ class FriendTest extends TestCase
 
         // レスポンスのJSONを取得
         $responseData = $response->json();
+        dd($responseData);
 
 
         // filter_friendとレスポンスの配列が一致しているかテスト
