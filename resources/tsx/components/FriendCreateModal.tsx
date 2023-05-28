@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import "./_FriendCreateModal.scss";
 import useStoreFriend from "../hooks/useStoreFriend";
 import {FriendType} from "../types";
-import {FriendCreateFormPropsType, FriendCreateModalPropsType} from "../types/index";
+import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
 
 const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
-    const {data, isLoading, createFriendData} = useStoreFriend();
+    const { isLoading, createFriendData} = useStoreFriend();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -17,7 +17,6 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
         await createFriendData(formData);
         setFriendName("");
         setMemo("")
-        onClose();
     }
 
     const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
