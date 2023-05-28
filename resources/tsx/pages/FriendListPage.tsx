@@ -14,8 +14,11 @@ const FriendListPage = () => {
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        // setKeyword(request.value);
         if (data) {
             console.log(data);
+        } else {
+            console.log("data is empty")
         }
         console.log(keyword);
         setKeyword("");

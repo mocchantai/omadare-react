@@ -193,9 +193,7 @@ class FriendTest extends TestCase
             ['friend_name' => '三宅'],
         ))->create();
 
-        $friends = Friend::factory()->count(1000)->create();
-
-        $keyword = "吉";
+        $keyword = "本";
 
         // APIエンドポイントにリクエスト
         $response = $this->postJson("api/friends/search", ['keyword' => $keyword]);
@@ -205,7 +203,7 @@ class FriendTest extends TestCase
 
         // レスポンスのJSONを取得
         $responseData = $response->json();
-        dd($responseData);
+//        dd($responseData);
 
 
         // filter_friendとレスポンスの配列が一致しているかテスト
@@ -213,8 +211,68 @@ class FriendTest extends TestCase
             return stripos($friend->friend_name, $keyword) !== false;
         });
 
-//        $this->assertEquals($filter_friend->toArray(), $responseData);
-//        $this->assertTrue($filter_friend->values()->toArray() === $responseData);
+        $this->assertTrue($filter_friend->pluck('friend_name')->toArray() === array_column($responseData, 'friend_name'));
+
+    }
+
+
+    public function test_friend_search_with_no_keyword()
+    {
+        $friends = Friend::factory()->count(15)->state(new Sequence(
+            ['friend_name' => '本村'],
+            ['friend_name' => '佐々木'],
+            ['friend_name' => '三宅'],
+        ))->create();
+
+        $keyword = "";
+
+        // APIエンドポイントにリクエスト
+        $response = $this->postJson("api/friends/search", ['keyword' => $keyword]);
+
+        // レスポンスのステータスコードを確認
+        $response->assertStatus(200);
+
+        // レスポンスのJSONを取得
+        $responseData = $response->json();
+//        dd($responseData);
+
+
+        // filter_friendとレスポンスの配列が一致しているかテスト
+        $filter_friend = $friends->filter(function ($friend) use ($keyword) {
+            return stripos($friend->friend_name, $keyword) !== false;
+        });
+
+        $this->assertTrue($filter_friend->pluck('friend_name')->toArray() === array_column($responseData, 'friend_name'));
+
+    }
+
+
+    public function test_friend_search_with_long_keyword_which_is_not_exist_in_datasets()
+    {
+        $friends = Friend::factory()->count(15)->state(new Sequence(
+            ['friend_name' => '本村'],
+            ['friend_name' => '佐々木'],
+            ['friend_name' => '三宅'],
+        ))->create();
+
+        $keyword = "初めまして、私は";
+
+        // APIエンドポイントにリクエスト
+        $response = $this->postJson("api/friends/search", ['keyword' => $keyword]);
+
+        // レスポンスのステータスコードを確認
+        $response->assertStatus(404);
+
+        // レスポンスのJSONを取得
+        $responseData = $response->json();
+//        dd($responseData);
+
+
+        // filter_friendとレスポンスの配列が一致しているかテスト
+        $filter_friend = $friends->filter(function ($friend) use ($keyword) {
+            return stripos($friend->friend_name, $keyword) !== false;
+        });
+
         $this->assertTrue($filter_friend->pluck('friend_name')->toArray() === array_column($responseData, 'friend_name'));
 
     }
