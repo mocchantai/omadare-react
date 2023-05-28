@@ -49,8 +49,8 @@ $search_bar_background: lighten($primary_color, 20%);
                 height: 100%;
             }
             &:hover {
-                border: 2px solid #FF9E9E; // ボーダーの色を変更
-                box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); // 影を追加
+                border: 2px solid $primary_color;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
             }
         }
     }

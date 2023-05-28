@@ -2,21 +2,19 @@ import React, {useState} from 'react';
 import './_SearchBar.scss';
 import {useSearchFriend} from "../hooks";
 
-const SearchBar = () => {
-    const [keyword, setKeyword] = useState("");
-    const { data, isLoading } = useSearchFriend(keyword);
+type SearchBarProps = {
+    onSearch: (e: React.FormEvent<HTMLFormElement>) => void;
+    keyword: string;
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
+}
 
 
-    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(data);
-        console.log(keyword);
-        setKeyword("");
-    }
+const SearchBar = ({onSearch, keyword, setKeyword}: SearchBarProps) => {
+
 
     return (
         <div className="search-bar">
-            <form className="search-form" onSubmit={handleSearch}>
+            <form className="search-form" onSubmit={onSearch}>
                 <input
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
                     type="text"
