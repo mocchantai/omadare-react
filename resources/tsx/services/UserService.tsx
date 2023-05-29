@@ -1,4 +1,4 @@
-import axios, {AxiosResponse, formToJSON} from "axios";
+import axios, {AxiosResponse} from "axios";
 import {UserType} from "../types";
 
 const storeUser = async (formData: UserType): Promise<UserType> => {
