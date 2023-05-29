@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FriendController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\AuthController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/friends', FriendController::class);
+    Route::apiResource('/user', UserController::class);
     Route::post('/friends/search', [FriendController::class, 'search']);
 
     Route::get('/user', function (Request $request) {
