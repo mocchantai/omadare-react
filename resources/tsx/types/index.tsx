@@ -4,6 +4,7 @@ import SearchBarPropsType from "./SearchBarPropsType";
 import FriendListPropsType from "./FriendListPropsType";
 import FriendCreateFormPropsType from "./FriendCreateFormPropsType";
 import CredentialsType from "./CredentialsType";
+import UserType from "./UserType";
 
 export {
     FriendType,
@@ -11,5 +12,6 @@ export {
     FriendCreateFormPropsType,
     SearchBarPropsType,
     FriendListPropsType,
-    CredentialsType
+    CredentialsType,
+    UserType
 }

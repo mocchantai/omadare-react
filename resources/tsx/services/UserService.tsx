@@ -1,11 +1,5 @@
-import {FriendType} from "../types";
 import axios, {AxiosResponse} from "axios";
-
-type UserType = {
-    name: string;
-    email: string;
-    password: string;
-}
+import {UserType} from "../types";
 
 const storeUser = async (formData: UserType): Promise<UserType> => {
     try {
@@ -15,4 +9,8 @@ const storeUser = async (formData: UserType): Promise<UserType> => {
         console.error("Failed to store user", error);
         throw new Error("Failed to store user");
     }
+}
+
+export {
+    storeUser,
 }
