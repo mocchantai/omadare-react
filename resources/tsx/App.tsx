@@ -5,9 +5,9 @@ import { LoginPage, RegistrationPage, FriendListPage } from './pages/index';
 const App = () => {
     return (
         <BrowserRouter>
-            {/*<Link to='/login'>Login</Link><br/>*/}
-            {/*<Link to='/registration'>Registration</Link><br/>*/}
-            {/*<Link to='/friendlist'>Friend</Link><br/>*/}
+            <Link to='/login'>Login</Link><br/>
+            <Link to='/registration'>Registration</Link><br/>
+            <Link to='/'>Friend</Link><br/>
 
             <Routes>
                 <Route path="/login" element={<LoginPage />} />
