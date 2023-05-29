@@ -7,6 +7,7 @@ import FriendCreateModal from "./FriendCreateModal";
 import Overlay from "./Overlay";
 import FriendCreateForm from "./FriendCreateForm";
 import LoginForm from "./LoginForm";
+import RegistrationForm from "./RegistrationForm";
 
 export {
     Header,
@@ -17,5 +18,6 @@ export {
     FriendCreateModal,
     Overlay,
     FriendCreateForm,
-    LoginForm
+    LoginForm,
+    RegistrationForm
 }

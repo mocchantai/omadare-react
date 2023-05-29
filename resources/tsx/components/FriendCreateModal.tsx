@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./_FriendCreateModal.scss";
-import useStoreFriend from "../hooks/useStoreFriend";
+import {useStoreFriend} from "../hooks";
 import {FriendType} from "../types";
 import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
