@@ -12,9 +12,9 @@ const useStoreFriend = () => {
             setData(response);
             setIsLoading(false);
         } catch (error) {
-            console.error("Failed to store friend", error);
+            console.error("Failed to store user", error);
             setIsLoading(false);
-            throw new Error("Failed to store friend");
+            throw new Error("Failed to store user");
         }
     };
 
