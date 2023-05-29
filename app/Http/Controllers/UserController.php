@@ -24,7 +24,9 @@ class UserController extends Controller
         $user = User::create($request->all());
 
         // Optionally, you can return a response or redirect to a different page
-        return response()->json(['message' => 'User created successfully'], 201);
+        return $user
+            ? response()->json($user, 201)
+            : response()->json([], 500);
     }
 
     /**

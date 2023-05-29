@@ -155,7 +155,8 @@ return [
 
     'attributes' => [
         'friend_name' => '名前',
-        'memo' => 'メモ'
+        'memo' => 'メモ',
+        'name' => '名前'
     ],
 
 ];

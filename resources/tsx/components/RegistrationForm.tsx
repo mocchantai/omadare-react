@@ -7,14 +7,18 @@ const RegistrationForm = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {isLoading, storeUserData} = useStoreUser();
+    const {data, isLoading, storeUserData} = useStoreUser();
 
 
     const handleSubmit: React.MouseEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(name, email, password)
+        setName("");
+        setEmail("");
+        setPassword("");
         const formData: UserType = {name, email, password};
         await storeUserData(formData);
+        console.log(data);
     };
 
     return (
@@ -24,9 +28,9 @@ const RegistrationForm = () => {
                 <p className="form-header__description">お名前、メールアドレス、パスワードを入力してください。</p>
             </div>
             <div className="form-contents">
-                <input onChange={(e) => setName(e.target.value)} className="form-contents__input" type="id" name="name" placeholder="お名前" />
-                <input onChange={(e) => setEmail(e.target.value)} className="form-contents__input" type="id" name="email" placeholder="メールアドレス" />
-                <input onChange={(e) => setPassword(e.target.value)} className="form-contents__input" type="password" name="password" placeholder="パスワード" />
+                <input onChange={(e) => setName(e.target.value)} className="form-contents__input" type="id" name="name" placeholder="お名前" value={name} />
+                <input onChange={(e) => setEmail(e.target.value)} className="form-contents__input" type="id" name="email" placeholder="メールアドレス" value={email} />
+                <input onChange={(e) => setPassword(e.target.value)} className="form-contents__input" type="password" name="password" placeholder="パスワード"  value={password} />
                 <input className="form-contents__input--submit"  type="submit" name="botton" value="ログイン" />
             </div>
         </form>
