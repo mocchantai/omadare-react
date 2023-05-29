@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
-import {useLoginUser} from "../hooks";
-import {CredentialsType} from "../types";
+import {useLoginUser, useStoreUser} from "../hooks";
+import {CredentialsType, UserType} from "../types";
 
 const RegistrationForm = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const {isLoading, loginUser} = useLoginUser();
+    const {isLoading, storeUserData} = useStoreUser();
 
 
     const handleSubmit: React.MouseEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(name, email, password)
-        // const credentials: CredentialsType = {email, password};
-        // await loginUser(credentials);
+        const formData: UserType = {name, email, password};
+        await storeUserData(formData);
     };
 
     return (
