@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 use App\Models\Friend;
 use App\Models\User;
@@ -16,9 +17,11 @@ class FriendTest extends TestCase
     {
         parent::setUp();
 
-        User::factory()->create([
-            'id' => 1, // id=1のユーザーを作成する
+        $user = User::factory()->create([
+            'id' => 1,
         ]);
+
+        Sanctum::actingAs($user);
     }
 
     /**
@@ -157,34 +160,6 @@ class FriendTest extends TestCase
         $this->assertEquals(9, $remainingFriendsCount);//削除後は9件になるはず
     }
 
-//    public function test_friend_search()
-//    {
-//        $friends = Friend::factory()->count(15)->state(new Sequence(
-//            ['friend_name' => '本村'],
-//            ['friend_name' => '佐々木'],
-//            ['friend_name' => '三宅'],
-//        ))->create();
-//
-//
-//        $filter_friend = $friends->filter(function ($friend) {
-//            return $friend->friend_name === '本村';
-//        });
-//
-////        dd($filter_friend->ToArray());
-//
-//        $keyword = '本村';
-//
-//        $response = $this->getJson("api/friends/search", ['keyword' => $keyword]);
-////        $response = $this->getJson("api/friends?keyword={$keyword}");
-//
-//        $response->assertStatus(200);
-//        $friends = $response->json();
-//
-//        dd($friends); // 友達の情報を表示
-//
-//    }
-
-
     public function test_friend_search()
     {
         $friends = Friend::factory()->count(15)->state(new Sequence(
@@ -205,7 +180,6 @@ class FriendTest extends TestCase
         $responseData = $response->json();
 //        dd($responseData);
 
-
         // filter_friendとレスポンスの配列が一致しているかテスト
         $filter_friend = $friends->filter(function ($friend) use ($keyword) {
             return stripos($friend->friend_name, $keyword) !== false;
@@ -214,7 +188,6 @@ class FriendTest extends TestCase
         $this->assertTrue($filter_friend->pluck('friend_name')->toArray() === array_column($responseData, 'friend_name'));
 
     }
-
 
     public function test_friend_search_with_no_keyword()
     {
