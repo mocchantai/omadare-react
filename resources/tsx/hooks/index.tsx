@@ -9,5 +9,5 @@ export {
     useStoreFriend,
     useSearchFriend,
     useLoginUser,
-    useStoreUser
+    useStoreUser,
 }

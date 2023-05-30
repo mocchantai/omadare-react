@@ -14,7 +14,7 @@ const Header = () => {
             <nav className="header__nav">
                 <ul>
                     <li>
-                        <a href="/">ログアウト</a>
+                        <Link to="/">ログアウト</Link>
                     </li>
                 </ul>
             </nav>
