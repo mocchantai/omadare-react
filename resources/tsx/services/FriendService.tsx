@@ -5,7 +5,11 @@ import {FriendType} from "../types/index";
 
 const fetchFriends = async (): Promise<FriendType[]> => {
     try {
-        const response: AxiosResponse<FriendType[]> = await axios.get<FriendType[]>('api/friends');
+        const response: AxiosResponse<FriendType[]> = await axios.get<FriendType[]>('api/friends', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
         return  response.data;
     } catch (error) {
         console.error("Failed to fetch friends", error);
@@ -15,7 +19,11 @@ const fetchFriends = async (): Promise<FriendType[]> => {
 
 const storeFriend = async (formData: FriendType): Promise<FriendType> => {
     try {
-        const response:AxiosResponse<FriendType> = await axios.post<FriendType>('api/friends', formData);
+        const response:AxiosResponse<FriendType> = await axios.post<FriendType>('api/friends', formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
         return response.data;
     } catch (error) {
         console.error("Failed to store friend", error);
@@ -27,6 +35,10 @@ const searchFriend = async (keyword: string): Promise<FriendType[]> => {
     try {
         const response: AxiosResponse<FriendType[]> = await axios.post<FriendType[]>('api/friends/search', {
             keyword: keyword,
+        }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
         });
         console.log(response.data);
         return response.data;

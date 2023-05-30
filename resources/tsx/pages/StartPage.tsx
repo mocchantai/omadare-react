@@ -6,11 +6,11 @@ const StartPage = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        navigate('/login'); // Navigate to LoginPage
+        navigate('/login');
     };
 
     const handleRegistration = () => {
-        navigate('/registration'); // Navigate to RegistrationPage
+        navigate('/registration');
     };
 
     return (
