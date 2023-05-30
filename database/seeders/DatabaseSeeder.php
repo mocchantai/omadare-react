@@ -14,7 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         User::factory()->count(10)->create();
-         Friend::factory()->count(10)->create();
+//        User::factory()->count(1)->create();
+//        Friend::factory()->count(10)->create();
+        $this->call([
+            UserSeeder::class,
+        ]);
+        $this->call([
+            FriendSeeder::class,
+        ]);
     }
 }

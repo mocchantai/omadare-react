@@ -8,17 +8,18 @@ const useLoginUser = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const loginUser = async (credentials: CredentialsType): Promise<void> => {
-        setIsLoading(true);
 
         try {
+            console.log("今はhooksにいます");
             const data = await login(credentials);
             setUser(data.user);
+            setIsLoading(false);
+
             localStorage.setItem('token', data.token); // Assuming the token is returned in the response
         } catch (error) {
-            console.log('Error during login', error);
-            throw new Error('Error during login');
-        } finally {
             setIsLoading(false);
+            console.error('Error during login in useLoginUser', error);
+            throw new Error('Error during login in useLoginUser');
         }
     };
 
