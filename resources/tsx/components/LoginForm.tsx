@@ -8,14 +8,14 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const {user, isLoading, loginUser} = useLoginUser();
 
-    console.log(email, password)
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("今handleSubmitです")
         console.log(email, password)
         const credentials: CredentialsType = {email, password};
         await loginUser(credentials);
-        console.log(user);
+        // console.log(user);
     };
 
     return (

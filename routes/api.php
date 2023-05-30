@@ -19,14 +19,16 @@ use App\Http\Controllers\UserController;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/friends', FriendController::class);
+    Route::post('/friends/search', [FriendController::class, 'search']);
+
+
 
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
 });
 
-Route::apiResource('/friends', FriendController::class);
-Route::post('/friends/search', [FriendController::class, 'search']);
 
 Route::apiResource('/user', UserController::class);
 

@@ -6,6 +6,7 @@ const login = async (credentials: CredentialsType) => {
     try {
         console.log("今からaxiosします")
         const response = await axios.post('api/login', credentials);
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.log("axios失敗です。")

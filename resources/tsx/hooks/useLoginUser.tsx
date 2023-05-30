@@ -12,6 +12,8 @@ const useLoginUser = () => {
         try {
             console.log("今はhooksにいます");
             const data = await login(credentials);
+            console.log("serviceに行ってからhooksに戻ってきました");
+            console.log(data.user);
             setUser(data.user);
             setIsLoading(false);
 
