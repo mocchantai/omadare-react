@@ -1,11 +1,16 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import './_Header.scss';
-
-
-
+import {useLogoutUser} from "../../hooks";
 
 const Header = () => {
+
+    const {data, isLoading, logoutUser} = useLogoutUser();
+
+    const handleLogout = async () => {
+        await logoutUser();
+    }
+
     return (
         <header className="header">
             <div className="header__logo">
@@ -14,7 +19,8 @@ const Header = () => {
             <nav className="header__nav">
                 <ul>
                     <li>
-                        <Link to="/">ログアウト</Link>
+                        {/*<Link to="/">ログアウト</Link>*/}
+                        <a onClick={handleLogout}>ログアウト</a>
                     </li>
                 </ul>
             </nav>

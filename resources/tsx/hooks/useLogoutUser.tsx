@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {logout} from "../services";
 
-const useLogout = () => {
+const useLogoutUser = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -22,4 +22,4 @@ const useLogout = () => {
     return {data, isLoading, logoutUser};
 };
 
-export default useLogout;
+export default useLogoutUser;
