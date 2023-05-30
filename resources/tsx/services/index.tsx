@@ -1,5 +1,5 @@
 import {fetchFriends, storeFriend, searchFriend} from "./FriendService";
-import {login} from "./AuthService";
+import {login, logout} from "./AuthService";
 
 import {storeUser} from "./UserService";
 
@@ -10,6 +10,7 @@ export {
     searchFriend,
 
     login,
+    logout,
 
     storeUser
 }

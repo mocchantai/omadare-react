@@ -32,11 +32,12 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         $user = $request->user();
-        $user->currentAccessToken()->delete();
+        $user->tokens()->where('name', 'API Token')->delete();
 
         return response()->json([
             'status' => 'success',
             'message' => 'ログアウトしました。',
         ]);
     }
+
 }
