@@ -5,10 +5,6 @@ import { StartPage, LoginPage, RegistrationPage, FriendListPage } from './pages/
 const App = () => {
     return (
         <BrowserRouter>
-            <Link to='/login'>Login</Link><br/>
-            <Link to='/registration'>Registration</Link><br/>
-            <Link to='/friend'>Friend</Link><br/>
-
             <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="/login" element={<LoginPage />} />
