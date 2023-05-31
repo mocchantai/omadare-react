@@ -28,7 +28,6 @@ $placeholder_color: #ccc;
 
     .form-contents {
         &__input {
-            border: 0;
             background: none;
             display: block;
             margin: 20px auto;
@@ -51,7 +50,6 @@ $placeholder_color: #ccc;
             }
 
             &--submit {
-                border: 0;
                 background: none;
                 display: block;
                 margin: 20px auto;
