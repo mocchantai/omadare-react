@@ -4,7 +4,6 @@ import {useStoreFriend} from "../hooks";
 import {FriendType} from "../types";
 import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
-import {useNavigate} from "react-router-dom";
 
 const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
