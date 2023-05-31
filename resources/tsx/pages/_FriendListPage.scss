@@ -9,4 +9,7 @@ $primary_color: #FF9E9E;
 
 .whole_page {
     background-color: $primary_color;
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
 }
