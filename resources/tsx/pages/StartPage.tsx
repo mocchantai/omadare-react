@@ -15,8 +15,12 @@ const StartPage = () => {
 
     return (
         <div className="start-page">
-            <button className="start-page__button" onClick={handleLogin}>Go to Login</button>
-            <button className="start-page__button" onClick={handleRegistration}>Go to Registration</button>
+            <img src="/images/secondary_logo.png" alt="ロゴ" className="start-page__logo" />
+            <h1 className="start-page__title">おまだれ？</h1>
+            <div className="start-page__buttons">
+                <button className="start-page__button start-page__button--login" onClick={handleLogin}>ログイン</button>
+                <button className="start-page__button start-page__button--registration" onClick={handleRegistration}>新規登録</button>
+            </div>
         </div>
     );
 };
