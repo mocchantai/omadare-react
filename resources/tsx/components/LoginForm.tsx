@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import {useLoginUser} from "../hooks";
 import {CredentialsType} from "../types";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const {user, isLoading, loginUser} = useLoginUser();
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,6 +19,8 @@ const LoginForm = () => {
         const credentials: CredentialsType = {email, password};
         await loginUser(credentials);
         // console.log(user);
+        navigate('/friend');
+
     };
 
     return (
