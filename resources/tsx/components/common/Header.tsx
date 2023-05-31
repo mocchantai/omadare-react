@@ -1,13 +1,16 @@
 import React from 'react';
 import './_Header.scss';
 import {useLogoutUser} from "../../hooks";
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
 
     const {data, isLoading, logoutUser} = useLogoutUser();
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         await logoutUser();
+        navigate('/');
     }
 
     return (
@@ -18,7 +21,6 @@ const Header = () => {
             <nav className="header__nav">
                 <ul>
                     <li>
-                        {/*<Link to="/">ログアウト</Link>*/}
                         <a onClick={handleLogout}>ログアウト</a>
                     </li>
                 </ul>
