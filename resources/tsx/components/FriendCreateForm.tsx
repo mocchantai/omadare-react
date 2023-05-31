@@ -3,6 +3,8 @@ import React from "react";
 import "./_FriendCreateForm.scss";
 
 const FriendCreateForm = (props: FriendCreateFormPropsType) => {
+
+
     return (
         <form onSubmit={props.onSubmit} className="create_form">
             <label htmlFor="friend_name">名前</label>

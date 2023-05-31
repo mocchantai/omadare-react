@@ -4,6 +4,7 @@ import {useStoreFriend} from "../hooks";
 import {FriendType} from "../types";
 import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
+import {useNavigate} from "react-router-dom";
 
 const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
@@ -17,6 +18,7 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
         await createFriendData(formData);
         setFriendName("");
         setMemo("")
+        onClose();
     }
 
     const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
