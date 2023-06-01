@@ -8,7 +8,6 @@ use App\Models\Friend;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
 use Symfony\Component\String\Inflector\FrenchInflector;
-use function MongoDB\BSON\toJSON;
 
 class FriendController extends Controller
 {
@@ -17,12 +16,12 @@ class FriendController extends Controller
      *
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-//        abort(500);//読み込みに失敗した時のエラーを表示されるテスト
-//        return [];//TODOが0件の時のエラーメッセージのテスト
+
         return Friend::all();
     }
+
 
 
     /**
