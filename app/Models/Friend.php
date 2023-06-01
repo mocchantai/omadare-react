@@ -12,7 +12,7 @@ class Friend extends Model
     protected $fillable = [
         'friend_name',
         'memo',
-        'user_id'
+        'user_id',
     ];
 
     public function user()
