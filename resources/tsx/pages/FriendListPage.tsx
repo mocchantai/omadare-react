@@ -5,8 +5,6 @@ import {useSearchFriend} from "../hooks";
 
 
 const FriendListPage = () => {
-
-
     //検索バー
     const [keyword, setKeyword] = useState("");
     const { data, isLoading } = useSearchFriend(keyword);
@@ -46,11 +44,11 @@ const FriendListPage = () => {
         <div className="whole_page">
             <Header />
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
-            <FriendList keyword={keyword} searchData={data} isSearchLoading={isLoading}/>
-            {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
+            <FriendList keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
+            {/*{isModalOpen && <FriendCreateModal onClose={toggleModal} />}*/}
             {/*<FriendEditModal />*/}
             {/*<button onClick={toggleModal} >OpenModal</button>*/}
-            <ModalOpenButton onOpen={toggleModal} />
+            {/*<ModalOpenButton onOpen={toggleModal} />*/}
         </div>
     );
 };

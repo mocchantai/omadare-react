@@ -11,13 +11,12 @@ const useFetchFriend = () => {
 
     const fetchData = async (): Promise<void> => {
         try {
-
-            console.log("useFetchFriendでContextを見る",user?.user?.id);
-
+            // console.log("useFetchFriendでContextを見る",user?.user?.id);
             const response: FriendType[] = await fetchFriends();
-            const filteredData = response.filter((friend) => friend.user_id === user?.user?.id);
+            console.log("response:",response);
+            const filteredData= response.filter((friend) => friend.user_id === user?.user?.id);
+            console.log("filteredData:",filteredData);
             setData(filteredData);
-
             setIsLoading(false);
         } catch (error) {
             console.error("Failed to fetch friends", error);
@@ -31,8 +30,12 @@ const useFetchFriend = () => {
         fetchData();
     }, [])
 
+    // useEffect(() => {
+    //     console.log("dataの更新", data)
+    // }, [data]);
 
-    return { data, isLoading };
+
+    return { data, isLoading, fetchData };
 };
 
 

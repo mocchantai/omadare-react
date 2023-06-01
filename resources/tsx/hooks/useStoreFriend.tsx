@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
-import {storeFriend} from "../services";
+import {fetchFriends, storeFriend} from "../services";
 import {FriendType} from "../types";
+import {useFetchFriend} from "./index";
 
 const useStoreFriend = () => {
     const [data, setData] = useState<FriendType | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const {fetchData} = useFetchFriend();
 
-    const createFriendData = async (formData: FriendType): Promise<void> => {
+    const storeFriendData = async (formData: FriendType): Promise<void> => {
         try {
             const response: FriendType = await storeFriend(formData);
             setData(response);
+            await fetchData();
             setIsLoading(false);
         } catch (error) {
             console.error("Failed to store friend", error);
@@ -18,7 +21,7 @@ const useStoreFriend = () => {
         }
     };
 
-    return {data, isLoading, createFriendData};
+    return {data, isLoading, storeFriendData};
 };
 
 export default useStoreFriend;

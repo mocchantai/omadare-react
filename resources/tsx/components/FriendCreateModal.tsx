@@ -5,11 +5,12 @@ import {FriendType} from "../types";
 import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
 import {UserContext} from "../contexts/UserContext";
+import {fetchFriends} from "../services";
 
 const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
-    const { isLoading, createFriendData} = useStoreFriend();
+    const { isLoading, storeFriendData} = useStoreFriend();
     const user = useContext(UserContext);
 
 
@@ -17,7 +18,7 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
         e.preventDefault();
         const formData = {friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
         console.log("formDataです。",formData);
-        await createFriendData(formData);
+        await storeFriendData(formData);
         setFriendName("");
         setMemo("")
         onClose();
