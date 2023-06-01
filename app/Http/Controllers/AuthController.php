@@ -20,6 +20,7 @@ class AuthController extends Controller
                 'status' => 'success',
                 'message' => 'ログインに成功しました。',
                 'token' => $token,
+                'user' => $user,
             ]);
         } else {
             // 認証失敗時の処理

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './_StartPage.scss';
+import {UserContext} from "../contexts/UserContext";
 
 const StartPage = () => {
+    const user = useContext(UserContext);
+    console.log(user);
+
+
     const navigate = useNavigate();
 
     const handleLogin = () => {
