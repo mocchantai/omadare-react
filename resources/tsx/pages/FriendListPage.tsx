@@ -54,6 +54,15 @@ const FriendListPage = () => {
         setIsEditModalOpen(!isEditModalOpen);
     };
 
+    useEffect(() => {
+        if (isEditModalOpen) {
+            document.body.classList.add('scroll-lock');
+        } else {
+            document.body.classList.remove('scroll-lock');
+
+        }
+    }, [isEditModalOpen])
+
 
     if (isLoading) {
         return <div>Loading...</div>;

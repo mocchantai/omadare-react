@@ -1,8 +1,7 @@
 import React, {useContext, useState} from 'react';
 import "./_FriendCreateModal.scss";
 import {useStoreFriend} from "../hooks";
-import {FriendType} from "../types";
-import {Overlay, FriendCreateForm, FriendEditForm, EditOverlay} from "./index";
+import {FriendEditForm, EditOverlay} from "./index";
 import {UserContext} from "../contexts/UserContext";
 import {fetchFriends, updateFriend} from "../services";
 
