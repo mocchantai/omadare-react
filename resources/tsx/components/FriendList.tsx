@@ -5,11 +5,13 @@ import "./_FriendList.scss";
 import {FriendType, FriendListPropsType} from "../types";
 import {searchFriend} from "../services";
 
-const FriendList = ({handleSample, keyword, searchData, isSearchLoading, isModalOpen}: FriendListPropsType) => {
+const FriendList = ({toggleEditModal, selectedFriend, keyword, searchData, isSearchLoading, isModalOpen}: FriendListPropsType) => {
 
     const {data: fetchedData, isLoading: isFetchLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
     const friends = keyword ? searchData : fetchedData;
     const isLoading = keyword ? isSearchLoading : isFetchLoading;
+
+
 
     if (isLoading) {
         return (
@@ -19,16 +21,16 @@ const FriendList = ({handleSample, keyword, searchData, isSearchLoading, isModal
         );
     }
 
-
-
     return (
         <div className="friend_list_container">
             {friends.map((friend,id) => (
                 <FriendCard
-                    handleSample={handleSample}
+                    toggleEditModal={toggleEditModal}
+                    selectedFriend={selectedFriend}
                     key={id}
                     friend_name={friend.friend_name}
                     memo={friend.memo}
+                    friend={friend}
                 />
             ))}
         </div>

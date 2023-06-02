@@ -31,6 +31,20 @@ const storeFriend = async (formData: FriendType): Promise<FriendType> => {
     }
 }
 
+const updateFriend = async (id: number, formData: FriendType): Promise<FriendType> => {
+    try {
+        const response:AxiosResponse<FriendType> = await axios.patch<FriendType>(`api/friends/${id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Failed to update friend", error);
+        throw new Error("Failed to update friend");
+    }
+}
+
 const searchFriend = async (keyword: string): Promise<FriendType[]> => {
     try {
         const response: AxiosResponse<FriendType[]> = await axios.post<FriendType[]>('api/friends/search', {
@@ -52,5 +66,6 @@ const searchFriend = async (keyword: string): Promise<FriendType[]> => {
 export {
     fetchFriends,
     storeFriend,
+    updateFriend,
     searchFriend
 };

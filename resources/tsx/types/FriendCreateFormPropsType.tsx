@@ -3,9 +3,9 @@ import React from "react";
 type FriendCreateFormPropsType = {
     onSubmit: (e: React.FormEvent) => Promise<void>,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    value: string,
+    friendName: string,
     onChange1: (e: React.ChangeEvent<HTMLTextAreaElement>) => void,
-    value1: string,
+    memo: string,
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 

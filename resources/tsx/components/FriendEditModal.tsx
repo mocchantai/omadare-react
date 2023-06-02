@@ -4,23 +4,26 @@ import {useStoreFriend} from "../hooks";
 import {FriendType} from "../types";
 import {Overlay, FriendCreateForm, FriendEditForm, EditOverlay} from "./index";
 import {UserContext} from "../contexts/UserContext";
-import {fetchFriends} from "../services";
+import {fetchFriends, updateFriend} from "../services";
 
 type FriendEditModalPropsType = {
-    toggleEditModal: () => void
-}
+    selectedFriendId: number;
+    toggleEditModal: () => void;
+    selectedFriendName: string;
+    selectedMemo: string;
+};
 
-const FriendEditModal = ({toggleEditModal}: FriendEditModalPropsType) => {
-    const [friendName, setFriendName] = useState("");
-    const [memo, setMemo] = useState("");
+const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, selectedMemo}: FriendEditModalPropsType) => {
+    const [friendName, setFriendName] = useState(selectedFriendName);
+    const [memo, setMemo] = useState(selectedMemo);
     const { isLoading, storeFriendData} = useStoreFriend();
     const user = useContext(UserContext);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = {friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
+        const formData = {id: selectedFriendId, friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
         console.log("formDataです。",formData);
-        await storeFriendData(formData);
+        await updateFriend(selectedFriendId, formData);
         setFriendName("");
         setMemo("")
         toggleEditModal();
@@ -46,9 +49,9 @@ const FriendEditModal = ({toggleEditModal}: FriendEditModalPropsType) => {
                 <FriendEditForm
                     onSubmit={handleSubmit}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFriendName(e.target.value)}
-                    value={friendName}
+                    friendName={friendName}
                     onChange1={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMemo(e.target.value)}
-                    value1={memo}
+                    memo={memo}
                     onClick={handleClose}
                 />
             </div>

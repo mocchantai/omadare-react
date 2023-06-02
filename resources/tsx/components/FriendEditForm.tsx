@@ -3,7 +3,7 @@ import React, {useContext} from "react";
 import "./_FriendCreateForm.scss";
 import {UserContext} from "../contexts/UserContext";
 
-const FriendEditForm = ({onSubmit, onChange, value, onChange1, value1, onClick}: FriendCreateFormPropsType) => {
+const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClick}: FriendCreateFormPropsType) => {
 
     const user = useContext(UserContext);
 
@@ -13,13 +13,13 @@ const FriendEditForm = ({onSubmit, onChange, value, onChange1, value1, onClick}:
             <input type="hidden" name="user_id" value={user?.user?.id}/>
             <label htmlFor="friend_name">名前</label>
             <input onChange={onChange}
-                   value={value} name="friend_name"
+                   value={friendName} name="friend_name"
                    type="text"
                    className="create_form__friend_name"
             />
             <label htmlFor="memo">メモ</label>
             <textarea onChange={onChange1}
-                      value={value1}
+                      value={memo}
                       name="memo"
                       className="create_form__memo">
             </textarea>

@@ -2,9 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal, FriendEditModal,} from "../components/index";
 import "./_FriendListPage.scss";
 import {useSearchFriend} from "../hooks";
+import {FriendType} from "../types";
 
 
 const FriendListPage = () => {
+    //編集
+    const [selectedFriendId, setSelectedFriendId] = useState(0);
+    const [selectedFriendName, setSelectedFriendName] = useState("");
+    const [selectedMemo, setSelectedMemo] = useState("");
+
+    const selectedFriend = (friend: FriendType) => {
+        setSelectedFriendId(friend.id);
+        setSelectedFriendName(friend.friend_name);
+        setSelectedMemo(friend.memo);
+    }
+
     //検索バー
     const [keyword, setKeyword] = useState("");
     const { data, isLoading } = useSearchFriend(keyword);
@@ -32,6 +44,12 @@ const FriendListPage = () => {
         }
     }, [isModalOpen])
 
+
+    type toggleEditModalType = {
+        toggleEditModal: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+    }
+
+
     const toggleEditModal = () => {
         setIsEditModalOpen(!isEditModalOpen);
     };
@@ -45,9 +63,9 @@ const FriendListPage = () => {
         <div className="whole_page">
             <Header />
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
-            <FriendList handleSample={toggleEditModal} keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
+            <FriendList toggleEditModal={toggleEditModal} selectedFriend={selectedFriend} keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
             {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
-            {isEditModalOpen && <FriendEditModal toggleEditModal={toggleEditModal} />}
+            {isEditModalOpen && <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName} selectedMemo={selectedMemo} toggleEditModal={toggleEditModal} />}
             <ModalOpenButton onOpen={toggleModal} />
         </div>
     );
