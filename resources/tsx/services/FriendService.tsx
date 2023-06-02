@@ -10,7 +10,6 @@ const fetchFriends = async (): Promise<FriendType[]> => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        console.log("初回だけ？", response.data);
         return  response.data;
     } catch (error) {
         console.error("Failed to fetch friends", error);
@@ -41,7 +40,6 @@ const searchFriend = async (keyword: string): Promise<FriendType[]> => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         });
-        // console.log(response.data);
         return response.data;
     } catch (error) {
         console.error("Failed to search friends", error);

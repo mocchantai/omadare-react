@@ -7,7 +7,6 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
 
     const user = useContext(UserContext);
 
-
     return (
         <form onSubmit={props.onSubmit} className="create_form">
             <input type="hidden" name="user_id" value={user?.user?.id}/>

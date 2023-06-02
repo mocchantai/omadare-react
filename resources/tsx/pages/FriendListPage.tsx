@@ -12,12 +12,8 @@ const FriendListPage = () => {
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-        console.log(data);
-        console.log(keyword);
         setKeyword("");
     }
-
 
     //モーダル
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,10 +41,9 @@ const FriendListPage = () => {
             <Header />
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
             <FriendList keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
-            {/*{isModalOpen && <FriendCreateModal onClose={toggleModal} />}*/}
+            {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
             {/*<FriendEditModal />*/}
-            {/*<button onClick={toggleModal} >OpenModal</button>*/}
-            {/*<ModalOpenButton onOpen={toggleModal} />*/}
+            <ModalOpenButton onOpen={toggleModal} />
         </div>
     );
 };

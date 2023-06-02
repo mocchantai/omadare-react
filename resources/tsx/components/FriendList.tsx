@@ -8,15 +8,8 @@ import {searchFriend} from "../services";
 const FriendList = ({keyword, searchData, isSearchLoading, isModalOpen}: FriendListPropsType) => {
 
     const {data: fetchedData, isLoading: isFetchLoading}: { data: FriendType[], isLoading: boolean }  = useFetchFriend();
-
-    // const friends = keyword ? searchData : fetchedData;
+    const friends = keyword ? searchData : fetchedData;
     const isLoading = keyword ? isSearchLoading : isFetchLoading;
-
-    const [friends, setFriends] = useState<FriendType[]>([]);
-
-    useEffect(() => {
-        setFriends(keyword ? searchData : fetchedData);
-    }, [isLoading]);
 
     if (isLoading) {
         return (
@@ -25,9 +18,6 @@ const FriendList = ({keyword, searchData, isSearchLoading, isModalOpen}: FriendL
             </div>
         );
     }
-
-    // console.log("fetchedDataを表示します。", fetchedData);
-    // console.log("friendsを表示します。", friends);
 
     return (
         <div className="friend_list_container">

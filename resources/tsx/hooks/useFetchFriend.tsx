@@ -8,7 +8,6 @@ const useFetchFriend = () => {
     const [isLoading, setIsLoading] = useState(true);
     const user = useContext(UserContext);
 
-
     const fetchData = async (): Promise<void> => {
         try {
             // console.log("useFetchFriendでContextを見る",user?.user?.id);
@@ -25,19 +24,11 @@ const useFetchFriend = () => {
         }
     }
 
-
     useEffect(() => {
         fetchData();
     }, [])
 
-    // useEffect(() => {
-    //     console.log("dataの更新", data)
-    // }, [data]);
-
-
     return { data, isLoading, fetchData };
 };
-
-
 
 export default useFetchFriend;

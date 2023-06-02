@@ -13,7 +13,6 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const { isLoading, storeFriendData} = useStoreFriend();
     const user = useContext(UserContext);
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = {friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
