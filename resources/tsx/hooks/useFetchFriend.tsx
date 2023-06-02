@@ -10,7 +10,6 @@ const useFetchFriend = () => {
 
     const fetchData = async (): Promise<void> => {
         try {
-            // console.log("useFetchFriendでContextを見る",user?.user?.id);
             const response: FriendType[] = await fetchFriends();
             console.log("response:",response);
             const filteredData= response.filter((friend) => friend.user_id === user?.user?.id);

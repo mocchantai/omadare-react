@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal,} from "../components/index";
+import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal, FriendEditModal,} from "../components/index";
 import "./_FriendListPage.scss";
 import {useSearchFriend} from "../hooks";
 
@@ -17,6 +17,7 @@ const FriendListPage = () => {
 
     //モーダル
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -31,6 +32,10 @@ const FriendListPage = () => {
         }
     }, [isModalOpen])
 
+    const toggleEditModal = () => {
+        setIsEditModalOpen(!isEditModalOpen);
+    };
+
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -40,9 +45,9 @@ const FriendListPage = () => {
         <div className="whole_page">
             <Header />
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
-            <FriendList keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
+            <FriendList handleSample={toggleEditModal} keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
             {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
-            {/*<FriendEditModal />*/}
+            {isEditModalOpen && <FriendEditModal toggleEditModal={toggleEditModal} />}
             <ModalOpenButton onOpen={toggleModal} />
         </div>
     );

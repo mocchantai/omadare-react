@@ -8,6 +8,12 @@ import Overlay from "./Overlay";
 import FriendCreateForm from "./FriendCreateForm";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
+import FriendEditForm from "./FriendEditForm";
+import EditOverlay from "./EditOverlay";
+import FriendEditModal from "./FriendEditModal";
+
+
+
 
 export {
     Header,
@@ -19,5 +25,8 @@ export {
     Overlay,
     FriendCreateForm,
     LoginForm,
-    RegistrationForm
+    RegistrationForm,
+    FriendEditModal,
+    FriendEditForm,
+    EditOverlay
 }
