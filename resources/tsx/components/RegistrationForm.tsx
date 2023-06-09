@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useLoginUser, useStoreUser} from "../hooks";
 import {CredentialsType, UserType} from "../types";
+import {useNavigate} from "react-router-dom";
 
 const RegistrationForm = () => {
 
@@ -8,6 +9,8 @@ const RegistrationForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const {data, isLoading, storeUserData} = useStoreUser();
+
+    const navigate = useNavigate();
 
 
     const handleSubmit: React.MouseEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,6 +20,7 @@ const RegistrationForm = () => {
         setPassword("");
         const formData: UserType = {name, email, password};
         await storeUserData(formData);
+        navigate('/login');
     };
 
     return (
