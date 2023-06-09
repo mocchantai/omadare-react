@@ -26,8 +26,8 @@ const RegistrationForm = () => {
                 <p className="form-header__description">お名前、メールアドレス、パスワードを入力してください。</p>
             </div>
             <div className="form-contents">
-                <input onChange={(e) => setName(e.target.value)} className="form-contents__input" type="id" name="name" placeholder="お名前" value={name} />
-                <input onChange={(e) => setEmail(e.target.value)} className="form-contents__input" type="id" name="email" placeholder="メールアドレス" value={email} />
+                <input onChange={(e) => setName(e.target.value)} className="form-contents__input" type="string" name="name" placeholder="お名前" value={name} />
+                <input onChange={(e) => setEmail(e.target.value)} className="form-contents__input" type="email" name="email" placeholder="メールアドレス" value={email} />
                 <input onChange={(e) => setPassword(e.target.value)} className="form-contents__input" type="password" name="password" placeholder="パスワード"  value={password} />
                 <input className="form-contents__input--submit"  type="submit" name="botton" value="新規登録" />
             </div>
