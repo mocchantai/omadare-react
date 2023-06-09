@@ -80,5 +80,6 @@ export {
     fetchFriends,
     storeFriend,
     updateFriend,
-    searchFriend
+    searchFriend,
+    destroyFriend
 };
