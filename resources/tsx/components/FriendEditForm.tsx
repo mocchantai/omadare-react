@@ -3,13 +3,9 @@ import React, {useContext} from "react";
 import "./_FriendCreateForm.scss";
 import {UserContext} from "../contexts/UserContext";
 
-const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClick}: FriendCreateFormPropsType) => {
+const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClick, onDestroy}: FriendCreateFormPropsType) => {
 
     const user = useContext(UserContext);
-
-    const handleDestroy = () => {
-
-    };
 
     return (
         <form onSubmit={onSubmit} className="create_form">
@@ -28,7 +24,7 @@ const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClic
                       className="create_form__memo">
             </textarea>
             <button className="create_form__submit_button">編集する</button>
-            <button onClick={handleDestroy} className="create_form__delete_button">削除する</button>
+            <button onClick={onDestroy} className="create_form__delete_button">削除する</button>
             <button type="button" className="create_form__close_button" onClick={onClick}>閉じる</button>
         </form>
     )

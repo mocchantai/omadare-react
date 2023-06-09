@@ -15,7 +15,7 @@ const useDestroyFriend = () => {
             console.error("Failed to destroy friend in hooks", error);
             setIsLoading(false);
             throw new Error("Failed to destroy friend in hooks");
-        }
+    }
     };
 
     return {data, isLoading, destroyFriendData};

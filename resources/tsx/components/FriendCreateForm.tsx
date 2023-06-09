@@ -12,13 +12,13 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
             <input type="hidden" name="user_id" value={user?.user?.id}/>
             <label htmlFor="friend_name">名前</label>
             <input onChange={props.onChange}
-                   value={props.value} name="friend_name"
+                   value={props.friendName} name="friend_name"
                    type="text"
                    className="create_form__friend_name"
             />
             <label htmlFor="memo">メモ</label>
             <textarea onChange={props.onChange1}
-                      value={props.value1}
+                      value={props.memo}
                       name="memo"
                       className="create_form__memo">
             </textarea>

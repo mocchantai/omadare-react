@@ -3,7 +3,7 @@ import "./_FriendCreateModal.scss";
 import {useStoreFriend} from "../hooks";
 import {FriendEditForm, EditOverlay} from "./index";
 import {UserContext} from "../contexts/UserContext";
-import {fetchFriends, updateFriend} from "../services";
+import {destroyFriend, fetchFriends, updateFriend} from "../services";
 
 type FriendEditModalPropsType = {
     selectedFriendId: number;
@@ -27,6 +27,17 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
         setMemo("")
         toggleEditModal();
     }
+
+
+    const handleDestroy = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const formData = {id: selectedFriendId, friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
+        console.log("selectedFriendIdです。",selectedFriendId);
+        await destroyFriend(selectedFriendId);
+        console.log("friendを削除しました。");
+        toggleEditModal();
+    }
+
 
     const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
         e.preventDefault();
@@ -52,6 +63,7 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
                     onChange1={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMemo(e.target.value)}
                     memo={memo}
                     onClick={handleClose}
+                    onDestroy={handleDestroy}
                 />
             </div>
         </div>
