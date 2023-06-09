@@ -14,16 +14,24 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
             <input type="hidden" name="user_id" value={user?.user?.id}/>
             <label htmlFor="friend_name">名前</label>
             <input
-                onChange={props.onChange}
+                onChange={props.onChangeFriendName}
                 value={props.friendName}
                 name="friend_name"
                 type="text"
                 className="create-form__friend-name"
             />
+            <label htmlFor="friend_name">コミュニティ</label>
+            <input
+                onChange={props.onChangeCommunityName}
+                value={props.communityName}
+                name="community_name"
+                type="text"
+                className="create-form__community-name"
+            />
 
             <label htmlFor="memo">メモ</label>
             <textarea
-                onChange={props.onChange1}
+                onChange={props.onChangeMemo}
                 value={props.memo}
                 name="memo"
                 className="create-form__memo"

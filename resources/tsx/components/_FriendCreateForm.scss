@@ -13,57 +13,13 @@ $primary_color: #FF9E9E;
         padding: 4px 8px;
     }
 
-    .tag-container {
-        position: relative;
-
-        &.scrollable {
-            max-height: 120px;
-            overflow-y: auto;
-        }
-
-        &__list {
-            padding: 4px 0;
-        }
-
-        &__tag {
-            background-color: #e0e0e0;
-            color: #333;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        &__tag.selected {
-            background-color: #FF9E9E;
-            color: #fff;
-        }
-
-        &__toggle {
-            cursor: pointer;
-            margin-top: 8px;
-
-            span {
-                font-size: 14px;
-            }
-        }
+    &__community-name {
+        border: none;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        padding: 4px 8px;
     }
-
-    .selected-tags {
-        &__tag {
-            background-color: #FF9E9E;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-right: 4px;
-            margin-bottom: 4px;
-        }
-    }
-
-
 
 &__memo {
     border: none;
