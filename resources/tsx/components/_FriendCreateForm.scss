@@ -1,11 +1,11 @@
 $primary_color: #FF9E9E;
 
-.create_form {
+.create-form {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 
-    &__friend_name {
+    &__friend-name {
         border: none;
         height: 40px;
         font-size: 16px;
@@ -13,41 +13,94 @@ $primary_color: #FF9E9E;
         padding: 4px 8px;
     }
 
-    &__memo {
-        border: none;
-        height: 120px;
-        font-size: 16px;
-        margin-bottom: 8px;
-        padding: 4px 8px;
-    }
+    .tag-container {
+        position: relative;
 
-    &__submit_button,
-    &__close_button {
-        background-color: $primary_color;
-        width: 40%;
-        height: 40px;
-        margin: 0 auto 8px auto;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: darken($primary_color, 10%);
+        &.scrollable {
+            max-height: 120px;
+            overflow-y: auto;
         }
 
-        &:focus {
-            outline: none;
+        &__list {
+            padding: 4px 0;
+        }
+
+        &__tag {
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        &__tag.selected {
+            background-color: #FF9E9E;
+            color: #fff;
+        }
+
+        &__toggle {
+            cursor: pointer;
+            margin-top: 8px;
+
+            span {
+                font-size: 14px;
+            }
         }
     }
+
+    .selected-tags {
+        &__tag {
+            background-color: #FF9E9E;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+    }
+
+
+
+&__memo {
+    border: none;
+    height: 120px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    padding: 4px 8px;
 }
 
-.create_form label {
+&__submit-button,
+&__close-button {
+    background-color: $primary_color;
+    width: 40%;
+    height: 40px;
+    margin: 0 auto 8px auto;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($primary_color, 10%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+}
+
+
+.create-form label {
     font-size: 16px;
     margin-bottom: 4px;
 }
 
-.create_form textarea {
+.create-form textarea {
     resize: vertical;
 }
