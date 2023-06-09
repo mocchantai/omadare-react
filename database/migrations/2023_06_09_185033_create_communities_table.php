@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->string('community_name');
+            $table->string('community_name')->nullable();
             $table->timestamps();
         });
     }

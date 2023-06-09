@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFriendRequest;
 use App\Http\Requests\UpdateFriendRequest;
+use App\Models\Community;
 use App\Models\Friend;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
@@ -29,12 +30,21 @@ class FriendController extends Controller
      */
     public function store(StoreFriendRequest $request)
     {
-        $friend = Friend::create($request->all());
+        $friendData = $request->only(['friend_name', 'memo']);
+        $communityData = $request->only(['community']);
+
+        $friend = Friend::create($friendData);
+
+        if ($communityData['community']) {
+            $community = Community::create(['community_name' => $communityData['community']]);
+            $friend->communities()->attach($community->id);
+        }
 
         return $friend
             ? response()->json($friend, 201)
             : response()->json([], 500);
     }
+
 
     /**
      * Display the specified resource.

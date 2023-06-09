@@ -9,6 +9,10 @@ class Community extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'community',
+    ];
+
     public function friends()
     {
         return $this->belongsToMany(Friend::class, 'members', 'community_id', 'friend_id');
