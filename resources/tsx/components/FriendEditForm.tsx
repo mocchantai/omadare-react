@@ -1,6 +1,6 @@
 import {FriendEditFormPropsType} from "../types";
 import React, {useContext} from "react";
-import "./_FriendCreateForm.scss";
+import "./_FriendEditForm.scss";
 import {UserContext} from "../contexts/UserContext";
 
 const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClick, onDestroy}: FriendEditFormPropsType) => {

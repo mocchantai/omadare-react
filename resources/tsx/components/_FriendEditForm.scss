@@ -20,8 +20,31 @@ $primary_color: #FF9E9E;
         margin-bottom: 8px;
         padding: 4px 8px;
     }
+    .button_container {
+        display: flex;
+        &__submit_button,
+        &__destroy_button {
+            background-color: $primary_color;
+            width: 40%;
+            height: 40px;
+            margin: 0 auto 8px auto;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
 
-    &__submit_button,
+            &:hover {
+                background-color: darken($primary_color, 10%);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+
     &__close_button {
         background-color: $primary_color;
         width: 40%;
