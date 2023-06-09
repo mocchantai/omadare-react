@@ -10,9 +10,10 @@ type FriendEditModalPropsType = {
     toggleEditModal: () => void;
     selectedFriendName: string;
     selectedMemo: string;
+    onRefetch: () => void;
 };
 
-const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, selectedMemo}: FriendEditModalPropsType) => {
+const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, selectedMemo, onRefetch}: FriendEditModalPropsType) => {
     const [friendName, setFriendName] = useState(selectedFriendName);
     const [memo, setMemo] = useState(selectedMemo);
     const { isLoading, storeFriendData} = useStoreFriend();
@@ -25,6 +26,7 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
         setFriendName("");
         setMemo("")
         toggleEditModal();
+        onRefetch();
     }
 
 

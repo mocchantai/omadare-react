@@ -90,7 +90,7 @@ const FriendListPage = () => {
             {isModalOpen && <FriendCreateModal onRefetch={refechFriends} onClose={toggleModal}/>}
             {isEditModalOpen &&
                 <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName}
-                                 selectedMemo={selectedMemo} toggleEditModal={toggleEditModal}/>}
+                                 selectedMemo={selectedMemo} toggleEditModal={toggleEditModal} onRefetch={refechFriends}/>}
             <ModalOpenButton onOpen={toggleModal}/>
         </div>
     );
