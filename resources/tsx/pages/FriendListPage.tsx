@@ -9,13 +9,15 @@ import {UserContext} from "../contexts/UserContext";
 
 const FriendListPage = () => {
     //編集
-    const [selectedFriendId, setSelectedFriendId] = useState(0);
+    const [selectedFriendId, setSelectedFriendId] = useState<number | undefined>(0);
+    const [selectedCommunityName, setSelectedCommunityName] = useState("");
     const [selectedFriendName, setSelectedFriendName] = useState("");
     const [selectedMemo, setSelectedMemo] = useState("");
 
     const selectedFriend = (friend: FriendType) => {
         setSelectedFriendId(friend.id);
         setSelectedFriendName(friend.friend_name);
+        setSelectedCommunityName(friend.community_name);
         setSelectedMemo(friend.memo);
     }
 
@@ -89,7 +91,7 @@ const FriendListPage = () => {
                         searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen} refetchedFriends={refetchedFriends}/>
             {isModalOpen && <FriendCreateModal onRefetch={refechFriends} onClose={toggleModal}/>}
             {isEditModalOpen &&
-                <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName}
+                <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName} selectedCommunityName={selectedCommunityName}
                                  selectedMemo={selectedMemo} toggleEditModal={toggleEditModal} onRefetch={refechFriends}/>}
             <ModalOpenButton onOpen={toggleModal}/>
         </div>

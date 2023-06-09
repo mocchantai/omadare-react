@@ -6,16 +6,17 @@ import {UserContext} from "../contexts/UserContext";
 import {destroyFriend, fetchFriends, updateFriend} from "../services";
 
 type FriendEditModalPropsType = {
-    selectedFriendId: number;
+    selectedFriendId: number | undefined;
     toggleEditModal: () => void;
     selectedFriendName: string;
+    selectedCommunityName : string;
     selectedMemo: string;
     onRefetch: () => void;
 };
 
-const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, selectedMemo, onRefetch}: FriendEditModalPropsType) => {
+const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, selectedCommunityName, selectedMemo, onRefetch}: FriendEditModalPropsType) => {
     const [friendName, setFriendName] = useState(selectedFriendName);
-    const [communityName, setCommunityName] = useState("");
+    const [communityName, setCommunityName] = useState(selectedCommunityName);
     const [memo, setMemo] = useState(selectedMemo);
     const { isLoading, storeFriendData} = useStoreFriend();
     const user = useContext(UserContext);

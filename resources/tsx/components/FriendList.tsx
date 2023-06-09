@@ -52,6 +52,7 @@ const FriendList = ({toggleEditModal, selectedFriend, keyword, searchData, isSea
                     selectedFriend={selectedFriend}
                     key={id}
                     friend_name={friend.friend_name}
+                    community_name={friend.community_name}
                     memo={friend.memo}
                     friend={friend}
                 />
