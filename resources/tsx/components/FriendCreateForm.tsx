@@ -5,25 +5,25 @@ import {UserContext} from "../contexts/UserContext";
 
 
 
-const FriendCreateForm = (props: FriendCreateFormPropsType) => {
+const FriendCreateForm = ({onSubmit, onChangeFriendName, friendName, onChangeCommunityName, communityName, onChangeMemo, memo, onClick}: FriendCreateFormPropsType) => {
     const user = useContext(UserContext);
 
 
     return (
-        <form onSubmit={props.onSubmit} className="create-form">
+        <form onSubmit={onSubmit} className="create-form">
             <input type="hidden" name="user_id" value={user?.user?.id}/>
             <label htmlFor="friend_name">名前</label>
             <input
-                onChange={props.onChangeFriendName}
-                value={props.friendName}
+                onChange={onChangeFriendName}
+                value={friendName}
                 name="friend_name"
                 type="text"
                 className="create-form__friend-name"
             />
             <label htmlFor="friend_name">コミュニティ</label>
             <input
-                onChange={props.onChangeCommunityName}
-                value={props.communityName}
+                onChange={onChangeCommunityName}
+                value={communityName}
                 name="community_name"
                 type="text"
                 className="create-form__community-name"
@@ -31,8 +31,8 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
 
             <label htmlFor="memo">メモ</label>
             <textarea
-                onChange={props.onChangeMemo}
-                value={props.memo}
+                onChange={onChangeMemo}
+                value={memo}
                 name="memo"
                 className="create-form__memo"
             ></textarea>
@@ -40,7 +40,7 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
             <button
                 type="button"
                 className="create-form__close-button"
-                onClick={props.onClick}
+                onClick={onClick}
             >
                 閉じる
             </button>

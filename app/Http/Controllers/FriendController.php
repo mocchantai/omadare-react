@@ -72,6 +72,7 @@ class FriendController extends Controller
     public function update(UpdateFriendRequest $request, Friend $friend)//DIでidに対応するFriendを取得
     {
         $friend->friend_name = $request->friend_name;
+        $friend->community_name = $request->community_name;
         $friend->memo = $request->memo;
 
         return $friend->update()
@@ -95,6 +96,7 @@ class FriendController extends Controller
         $keyword = $request->input('keyword');
 
         $friends = Friend::where('friend_name','like', '%' .$keyword. '%')
+            ->OrWhere('community_name', 'like', '%' .$keyword. '%')
             ->OrWhere('memo', 'like', '%' .$keyword. '%')
             ->get();
 
