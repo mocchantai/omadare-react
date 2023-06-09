@@ -19,4 +19,9 @@ class Friend extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class, 'members', 'friend_id', 'community_id');
+    }
 }
