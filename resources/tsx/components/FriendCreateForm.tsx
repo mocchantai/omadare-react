@@ -1,5 +1,5 @@
 import {FriendCreateFormPropsType} from "../types";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import "./_FriendCreateForm.scss";
 import {UserContext} from "../contexts/UserContext";
 
@@ -26,6 +26,7 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
     ]);
     const [showAllCommunities, setShowAllCommunities] = useState(false);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const tagContainerRef = useRef<HTMLDivElement>(null);
 
     const handleTagSelect = (tag: string) => {
         setSelectedTags((prevTags) => {
@@ -41,6 +42,23 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
         setShowAllCommunities((prevValue) => !prevValue);
     };
 
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (
+                tagContainerRef.current &&
+                !tagContainerRef.current.contains(event.target as Node)
+            ) {
+                setShowAllCommunities(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
+
     return (
         <form onSubmit={props.onSubmit} className="create-form">
             <input type="hidden" name="user_id" value={user?.user?.id}/>
@@ -53,7 +71,10 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
                 className="create-form__friend-name"
             />
             <label htmlFor="community_name">コミュニティ</label>
-            <div className={`tag-container ${showAllCommunities ? "scrollable" : ""}`}>
+            <div
+                className={`tag-container ${showAllCommunities ? "scrollable" : ""}`}
+                ref={tagContainerRef}
+            >
                 {showAllCommunities ? (
                     <div className="tag-container__list">
                         {communities.map((community) => (
@@ -73,7 +94,7 @@ const FriendCreateForm = (props: FriendCreateFormPropsType) => {
                         {communities.slice(0, 3).map((community) => (
                             <div
                                 key={community.id}
-                                className={`tag ${
+                                className={`tag-container__tag ${
                                     selectedTags.includes(community.name) ? "selected" : ""
                                 }`}
                                 onClick={() => handleTagSelect(community.name)}
