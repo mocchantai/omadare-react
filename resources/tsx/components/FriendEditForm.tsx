@@ -23,8 +23,10 @@ const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClic
                       name="memo"
                       className="create_form__memo">
             </textarea>
-            <button className="create_form__submit_button">編集する</button>
-            <button onClick={onDestroy} className="create_form__delete_button">削除する</button>
+            <div className="button_container">
+                <button className="button_container__submit_button">編集する</button>
+                <button onClick={onDestroy} className="button_container__destroy_button">削除する</button>
+            </div>
             <button type="button" className="create_form__close_button" onClick={onClick}>閉じる</button>
         </form>
     )
