@@ -11,9 +11,7 @@ const useFetchFriend = () => {
     const fetchData = async (): Promise<void> => {
         try {
             const response: FriendType[] = await fetchFriends();
-            console.log("response:",response);
             const filteredData= response.filter((friend) => friend.user_id === user?.user?.id);
-            console.log("filteredData:",filteredData);
             setData(filteredData);
             setIsLoading(false);
         } catch (error) {

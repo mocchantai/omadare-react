@@ -4,13 +4,10 @@ import {CredentialsType} from "../types";
 
 const login = async (credentials: CredentialsType) => {
     try {
-        console.log("今からaxiosします")
         const response = await axios.post('api/login', credentials);
-        console.log(response.data);
         localStorage.setItem("token", response.data.token);
         return response.data;
     } catch (error) {
-        console.log("axios失敗です。")
         console.error('Error during login in AuthService', error);
         throw new Error("Error during login")
 
@@ -20,13 +17,11 @@ const login = async (credentials: CredentialsType) => {
 
 const logout = async () => {
     try {
-        console.log("今からaxiosします");
         const response = await axios.post('api/logout');
-        console.log(response.data);
         localStorage.removeItem("token");
         return response.data;
     } catch (error) {
-        console.log("Failed to logout in AuthService", error);
+        console.error("Failed to logout in AuthService", error);
         throw new Error("Failed to logout in AuthService");
     }
 }

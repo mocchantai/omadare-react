@@ -5,8 +5,6 @@ import {UserContext} from "../contexts/UserContext";
 
 const StartPage = () => {
     const user = useContext(UserContext);
-    console.log(user);
-
 
     const navigate = useNavigate();
 

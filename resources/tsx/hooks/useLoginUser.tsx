@@ -13,10 +13,7 @@ const useLoginUser = () => {
     const loginUser = async (credentials: CredentialsType): Promise<void> => {
 
         try {
-            console.log("今はhooksにいます");
             const data = await login(credentials);
-            console.log("serviceに行ってからhooksに戻ってきました");
-            console.log(data.user);
             user?.setUser(data.user);//UserContextのuserをdata.userに変更する
             setIsLoading(false);
 

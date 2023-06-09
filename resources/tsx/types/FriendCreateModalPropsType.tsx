@@ -1,6 +1,7 @@
 import React from "react";
 
 type FriendCreateFormProps = {
+    onRefetch: () => void;
     onClose: () => void;
 };
 

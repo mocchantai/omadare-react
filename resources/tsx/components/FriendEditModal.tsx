@@ -21,7 +21,6 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = {id: selectedFriendId, friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
-        console.log("formDataです。",formData);
         await updateFriend(selectedFriendId, formData);
         setFriendName("");
         setMemo("")
@@ -32,9 +31,7 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
     const handleDestroy = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = {id: selectedFriendId, friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
-        console.log("selectedFriendIdです。",selectedFriendId);
         await destroyFriend(selectedFriendId);
-        console.log("friendを削除しました。");
         toggleEditModal();
     }
 

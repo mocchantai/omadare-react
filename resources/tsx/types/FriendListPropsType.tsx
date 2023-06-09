@@ -7,6 +7,7 @@ type FriendListPropsType = {
     searchData: FriendType[];
     isSearchLoading: boolean;
     isModalOpen: boolean;
+    refetchedFriends: FriendType[];
 }
 
 export default FriendListPropsType;

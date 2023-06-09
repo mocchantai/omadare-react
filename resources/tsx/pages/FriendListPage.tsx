@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Header, SearchBar, FriendList, ModalOpenButton, FriendCreateModal, FriendEditModal,} from "../components/index";
 import "./_FriendListPage.scss";
-import {useSearchFriend} from "../hooks";
+import {useFetchFriend, useSearchFriend} from "../hooks";
 import {FriendType} from "../types";
+import {fetchFriends} from "../services";
+import {UserContext} from "../contexts/UserContext";
 
 
 const FriendListPage = () => {
@@ -19,7 +21,7 @@ const FriendListPage = () => {
 
     //検索バー
     const [keyword, setKeyword] = useState("");
-    const { data, isLoading } = useSearchFriend(keyword);
+    const {data, isLoading} = useSearchFriend(keyword);
 
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,18 +66,32 @@ const FriendListPage = () => {
     }, [isEditModalOpen])
 
 
+    //一覧データの更新
+    const [refetchedFriends, setRefetchedFriends] = useState<FriendType[]>([]);
+    const user = useContext(UserContext);
+
+    const refechFriends = async () => {
+        const response = await fetchFriends();
+        const filteredData= response.filter((friend) => friend.user_id === user?.user?.id);
+        setRefetchedFriends(filteredData);
+    }
+
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    return(
+    return (
         <div className="whole_page">
-            <Header />
+            <Header/>
             <SearchBar onSearch={handleSearch} keyword={keyword} setKeyword={setKeyword}/>
-            <FriendList toggleEditModal={toggleEditModal} selectedFriend={selectedFriend} keyword={keyword} searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen}/>
-            {isModalOpen && <FriendCreateModal onClose={toggleModal} />}
-            {isEditModalOpen && <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName} selectedMemo={selectedMemo} toggleEditModal={toggleEditModal} />}
-            <ModalOpenButton onOpen={toggleModal} />
+            <FriendList toggleEditModal={toggleEditModal} selectedFriend={selectedFriend} keyword={keyword}
+                        searchData={data} isSearchLoading={isLoading} isModalOpen={isModalOpen} refetchedFriends={refetchedFriends}/>
+            {isModalOpen && <FriendCreateModal onRefetch={refechFriends} onClose={toggleModal}/>}
+            {isEditModalOpen &&
+                <FriendEditModal selectedFriendId={selectedFriendId} selectedFriendName={selectedFriendName}
+                                 selectedMemo={selectedMemo} toggleEditModal={toggleEditModal}/>}
+            <ModalOpenButton onOpen={toggleModal}/>
         </div>
     );
 };

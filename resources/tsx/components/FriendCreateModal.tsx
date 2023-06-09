@@ -7,7 +7,7 @@ import {Overlay, FriendCreateForm} from "./index";
 import {UserContext} from "../contexts/UserContext";
 import {destroyFriend, fetchFriends} from "../services";
 
-const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
+const FriendCreateModal = ({onRefetch, onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
     const [memo, setMemo] = useState("");
     const { isLoading, storeFriendData} = useStoreFriend();
@@ -16,11 +16,11 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = {id: 0,friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
-        console.log("formDataです。",formData);
         await storeFriendData(formData);
         setFriendName("");
         setMemo("")
         onClose();
+        onRefetch();
     }
 
     const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {

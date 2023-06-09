@@ -12,13 +12,11 @@ const RegistrationForm = () => {
 
     const handleSubmit: React.MouseEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(name, email, password)
         setName("");
         setEmail("");
         setPassword("");
         const formData: UserType = {name, email, password};
         await storeUserData(formData);
-        console.log(data);
     };
 
     return (

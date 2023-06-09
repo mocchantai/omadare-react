@@ -16,10 +16,7 @@ const LoginForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("今handleSubmitです")
-        // console.log(email, password)
         const credentials: CredentialsType = {email, password};
-        // console.log("userの値は？", user);
         await loginUser(credentials);
 
 

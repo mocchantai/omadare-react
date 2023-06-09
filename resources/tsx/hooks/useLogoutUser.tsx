@@ -9,7 +9,6 @@ const useLogoutUser = () => {
     const logoutUser = async () => {
         try {
             const response  = await logout();
-            console.log(response.data);
             setData(response.data);
             setIsLoading(false);
         } catch (error) {

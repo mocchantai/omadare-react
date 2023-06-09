@@ -8,13 +8,10 @@ const useStoreUser = () => {
 
     const storeUserData = async (formData: UserType): Promise<void> => {
         try {
-            console.log("storeのhooksのtryにいます。これからaxiosをしますよね？")
             const response: UserType = await storeUser(formData);
             setData(response);
             setIsLoading(false);
         } catch (error) {
-            console.log("storeのhooksのcatchにいます。")
-            console.error("Failed to store user in useStoreUser", error);
             setIsLoading(false);
             throw new Error("Failed to store user in useStoreUser");
         }
