@@ -7,7 +7,6 @@ type FriendCreateFormPropsType = {
     onChange1: (e: React.ChangeEvent<HTMLTextAreaElement>) => void,
     memo: string,
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
-    onDestroy: (e: React.MouseEvent<HTMLButtonElement>) =>void,
 };
 
 export default FriendCreateFormPropsType;

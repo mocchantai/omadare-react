@@ -12,7 +12,6 @@ const useStoreFriend = () => {
         try {
             const response: FriendType = await storeFriend(formData);
             setData(response);
-            await fetchData();
             setIsLoading(false);
         } catch (error) {
             console.error("Failed to store friend", error);

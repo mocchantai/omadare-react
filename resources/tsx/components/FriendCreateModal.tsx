@@ -5,7 +5,7 @@ import {FriendType} from "../types";
 import {FriendCreateModalPropsType} from "../types/index";
 import {Overlay, FriendCreateForm} from "./index";
 import {UserContext} from "../contexts/UserContext";
-import {fetchFriends} from "../services";
+import {destroyFriend, fetchFriends} from "../services";
 
 const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
     const [friendName, setFriendName] = useState("");
@@ -15,7 +15,7 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = {friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
+        const formData = {id: 0,friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
         console.log("formDataです。",formData);
         await storeFriendData(formData);
         setFriendName("");
@@ -43,9 +43,9 @@ const FriendCreateModal = ({onClose}: FriendCreateModalPropsType) => {
                 <FriendCreateForm
                     onSubmit={handleSubmit}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFriendName(e.target.value)}
-                    value={friendName}
+                    friendName={friendName}
                     onChange1={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMemo(e.target.value)}
-                    value1={memo}
+                    memo={memo}
                     onClick={handleClose}
                 />
             </div>
