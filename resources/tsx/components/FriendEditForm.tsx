@@ -7,6 +7,10 @@ const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClic
 
     const user = useContext(UserContext);
 
+    const handleDestroy = () => {
+
+    };
+
     return (
         <form onSubmit={onSubmit} className="create_form">
             <h4>編集モーダル</h4>
@@ -23,7 +27,8 @@ const FriendEditForm = ({onSubmit, onChange, friendName, onChange1, memo, onClic
                       name="memo"
                       className="create_form__memo">
             </textarea>
-            <button className="create_form__submit_button">送信</button>
+            <button className="create_form__submit_button">編集する</button>
+            <button onClick={handleDestroy} className="create_form__delete_button">削除する</button>
             <button type="button" className="create_form__close_button" onClick={onClick}>閉じる</button>
         </form>
     )

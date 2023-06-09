@@ -45,6 +45,19 @@ const updateFriend = async (id: number, formData: FriendType): Promise<FriendTyp
     }
 }
 
+const destroyFriend = async (id: number): Promise<FriendType> => {
+    try {
+        const response:AxiosResponse<FriendType> = await axios.delete<FriendType>(`api/friends/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Failed to delete friend", error);
+        throw new Error("Failed to delete friend");
+    }
+}
 const searchFriend = async (keyword: string): Promise<FriendType[]> => {
     try {
         const response: AxiosResponse<FriendType[]> = await axios.post<FriendType[]>('api/friends/search', {

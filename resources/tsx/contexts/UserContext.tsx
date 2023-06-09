@@ -14,7 +14,6 @@ type InitialStateType = {
 };
 
 
-
 const UserProvider: React.FC<UserProviderPropsType> = ({children}) => {
     const [user, setUser] = useState<UserType | null>(null);
 
