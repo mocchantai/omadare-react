@@ -1,8 +1,9 @@
 import React from 'react';
 
 type FriendType = {
-    id: number;
+    id?: number;
     friend_name: string;
+    community_name: string;
     memo: string;
     user_id: number;
 };

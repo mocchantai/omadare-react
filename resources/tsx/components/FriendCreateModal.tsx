@@ -16,7 +16,7 @@ const FriendCreateModal = ({onRefetch, onClose}: FriendCreateModalPropsType) => 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = {id: 0,friend_name: friendName, community_name: communityName, memo: memo, user_id: user?.user?.id || 0};
+        const formData = {friend_name: friendName, community_name: communityName, memo: memo, user_id: user?.user?.id || 0};
         await storeFriendData(formData);
         setFriendName("");
         setCommunityName("");

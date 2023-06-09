@@ -10,6 +10,7 @@ const useStoreFriend = () => {
 
     const storeFriendData = async (formData: FriendType): Promise<void> => {
         try {
+            console.log("formData", formData);
             const response: FriendType = await storeFriend(formData);
             setData(response);
             setIsLoading(false);

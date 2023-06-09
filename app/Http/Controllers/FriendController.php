@@ -28,17 +28,29 @@ class FriendController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+//    public function store(StoreFriendRequest $request)
+//    {
+//        $friendData = $request->only(['friend_name', 'memo']);
+//        $communityData = $request->only(['community_name']);
+//
+//        $friend = Friend::create($friendData);
+//
+//        if ($communityData['community_name']) {
+//            $community = Community::create(['community_name' => $communityData['community_name']]);
+//            $friend->communities()->attach($community->id);
+//        }
+//
+//        return $friend
+//            ? response()->json($friend, 201)
+//            : response()->json([], 500);
+//    }
+
     public function store(StoreFriendRequest $request)
     {
-        $friendData = $request->only(['friend_name', 'memo']);
-        $communityData = $request->only(['community']);
+        $friendData = $request->only(['friend_name','community_name', 'memo', 'user_id']);
+//        $friendData = $request->only(['friend_name', 'memo', 'user_id']);
 
         $friend = Friend::create($friendData);
-
-        if ($communityData['community']) {
-            $community = Community::create(['community_name' => $communityData['community']]);
-            $friend->communities()->attach($community->id);
-        }
 
         return $friend
             ? response()->json($friend, 201)

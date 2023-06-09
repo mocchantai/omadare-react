@@ -11,6 +11,7 @@ class Friend extends Model
 
     protected $fillable = [
         'friend_name',
+        'community_name',
         'memo',
         'user_id',
     ];
@@ -20,8 +21,8 @@ class Friend extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function communities()
-    {
-        return $this->belongsToMany(Community::class, 'members', 'friend_id', 'community_id');
-    }
+//    public function communities()
+//    {
+//        return $this->belongsToMany(Community::class, 'members', 'friend_id', 'community_id');
+//    }
 }
