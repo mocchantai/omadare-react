@@ -35,6 +35,7 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
         const formData = {id: selectedFriendId, friend_name: friendName, memo: memo, user_id: user?.user?.id || 0};
         await destroyFriend(selectedFriendId);
         toggleEditModal();
+        onRefetch();
     }
 
 
