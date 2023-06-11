@@ -8,7 +8,6 @@ const useSearchFriend = (keyword: string) => {
     const [isLoading, setIsLoading] = useState(true);
     const user = useContext(UserContext);
 
-
     useEffect(() => {
         const searchData = async () => {
             try {

@@ -12,7 +12,6 @@ const FriendList = ({toggleEditModal, selectedFriend, keyword, searchData, isSea
     const [friends, setFriends] = useState<FriendType[]>(keyword ? searchData : fetchedData);
     const isLoading = keyword ? isSearchLoading : isFetchLoading;
 
-
     useEffect(() => {
         if (refetchedFriends) {
             // refetchFriendDataが存在する場合はデータの再取得がトリガーされたことを意味する
@@ -24,6 +23,7 @@ const FriendList = ({toggleEditModal, selectedFriend, keyword, searchData, isSea
         if (!refetchedFriends) {
             // 初回レンダリング時の処理
             setFriends(keyword ? searchData : fetchedData);
+            console.log("keywordがなくなったよ");
         }
     }, []);
 
@@ -33,8 +33,6 @@ const FriendList = ({toggleEditModal, selectedFriend, keyword, searchData, isSea
             setFriends(keyword ? searchData : refetchedFriends);
         }
     }, [keyword, searchData, refetchedFriends ]);
-
-
 
     if (isLoading) {
         return (

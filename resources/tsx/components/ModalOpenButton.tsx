@@ -12,9 +12,7 @@ const ModalOpenButton: React.FC<ModalOpenButtonProps> = ({ onOpen }) => {
     };
 
     return (
-        <button className="modal_open_button" onClick={handleClick}>
-            <img src="/images/plus_icon2.svg" alt="ボタンのアイコン" />
-        </button>
+        <button className="modal-open-button" onClick={handleClick}></button>
     );
 };
 

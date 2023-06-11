@@ -25,7 +25,6 @@ const FriendListPage = () => {
     const [keyword, setKeyword] = useState("");
     const {data, isLoading} = useSearchFriend(keyword);
 
-
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setKeyword("");
@@ -48,11 +47,9 @@ const FriendListPage = () => {
         }
     }, [isModalOpen])
 
-
     type toggleEditModalType = {
         toggleEditModal: (e: React.MouseEvent<HTMLAnchorElement>) => void;
     }
-
 
     const toggleEditModal = () => {
         setIsEditModalOpen(!isEditModalOpen);
@@ -67,7 +64,6 @@ const FriendListPage = () => {
         }
     }, [isEditModalOpen])
 
-
     //一覧データの更新
     const [refetchedFriends, setRefetchedFriends] = useState<FriendType[]>([]);
     const user = useContext(UserContext);
@@ -77,7 +73,6 @@ const FriendListPage = () => {
         const filteredData= response.filter((friend) => friend.user_id === user?.user?.id);
         setRefetchedFriends(filteredData);
     }
-
 
     if (isLoading) {
         return <div>Loading...</div>;
