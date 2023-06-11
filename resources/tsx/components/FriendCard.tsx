@@ -19,10 +19,10 @@ const FriendCard: React.FC<FriendCardProps> = ({toggleEditModal, selectedFriend,
     }
 
     return (
-        <a onClick={handleCardClick} className="friend_card">
-            <h3 className="friend_card__name">{friend_name}</h3>
-            <h3 className="friend_card__community">{community_name}</h3>
-            <p className="friend_card__memo">{memo}</p>
+        <a onClick={handleCardClick} className="friend-card">
+            <h3 className="friend-card__name">{friend_name}</h3>
+            {community_name && <h3 className="friend-card__community">{community_name}</h3>}
+            <p className="friend-card__memo">{memo}</p>
         </a>
     );
 };
