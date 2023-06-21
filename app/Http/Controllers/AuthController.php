@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\UseCases\LoginUseCase;
-use App\UseCases\LogoutUseCase;
+use App\UseCases\Auth\LoginUseCase;
+use App\UseCases\Auth\LogoutUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

@@ -2,7 +2,7 @@
 
 // UserRegistrationUseCase.php
 
-namespace App\UseCases;
+namespace App\UseCases\User;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
@@ -19,15 +19,12 @@ class UserRegistrationUseCase
 
     public function registerUser(array $validatedData): User
     {
-        // ユーザデータのバリデーションや重複チェックなどのビジネスロジックを実行
-
-        // パスワードのハッシュ化などの操作
         $userData = [
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ];
-        // ユーザをリポジトリを介して永続化
+
         return $this->userRepository->create($userData);
     }
 }

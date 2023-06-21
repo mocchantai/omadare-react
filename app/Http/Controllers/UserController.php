@@ -5,7 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
-use App\UseCases\UserRegistrationUseCase;
+use App\UseCases\User\UserRegistrationUseCase;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
