@@ -27,7 +27,8 @@ const FriendEditModal = ({toggleEditModal,selectedFriendId, selectedFriendName, 
         await updateFriend(selectedFriendId, formData);
         setFriendName("");
         setCommunityName("");
-        setMemo("")
+        setMemo("");
+        console.log(formData);
         toggleEditModal();
         onRefetch();
     }
