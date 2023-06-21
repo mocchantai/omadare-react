@@ -2,7 +2,6 @@
 
 namespace App\UseCases\Friend;
 
-
 use App\Models\Friend;
 use App\Repositories\FriendRepository;
 
@@ -15,11 +14,11 @@ class UpdateFriendUseCase
         $this->friendRepository = $friendRepository;
     }
 
-    public function execute(Friend $friend, array $data): bool
+    public function execute(Friend $friend, array $data): ?Friend
     {
-        // ここでバリデーションやビジネスロジックの処理を行います
-
         // Friendの更新
-        return $this->friendRepository->update($friend, $data);
+        $success = $this->friendRepository->update($friend, $data);
+
+        return $success ? $friend : null;
     }
 }

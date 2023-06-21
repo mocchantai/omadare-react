@@ -6,12 +6,12 @@ import {UserContext} from "../contexts/UserContext";
 const FriendEditForm = ({onSubmit, onChangeFriendName, friendName, onChangeCommunityName, communityName, onChangeMemo, memo, onClick, onDestroy}: FriendEditFormPropsType) => {
 
 
-    const user = useContext(UserContext);
+    // const user = useContext(UserContext);
 
     return (
         <form onSubmit={onSubmit} className="create_form">
             <h4>編集モーダル</h4>
-            <input type="hidden" name="user_id" value={user?.user?.id}/>
+            {/*<input type="hidden" name="user_id" value={user?.user?.id}/>*/}
             <label htmlFor="friend_name">名前</label>
             <input onChange={onChangeFriendName}
                    value={friendName} name="friend_name"

@@ -14,7 +14,6 @@ class FriendRepository
 
     public function update(Friend $friend, array $data): bool
     {
-        // Friendの更新
         return $friend->update($data);
     }
 
