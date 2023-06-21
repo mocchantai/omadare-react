@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFriendRequest;
 use App\Http\Requests\UpdateFriendRequest;
 use App\Models\Friend;
-use App\UseCases\CreateFriendUseCase;
-use App\UseCases\DeleteFriendUseCase;
-use App\UseCases\SearchFriendUseCase;
-use App\UseCases\UpdateFriendUseCase;
+
+use App\UseCases\Friend\CreateFriendUseCase;
+use App\UseCases\Friend\DeleteFriendUseCase;
+use App\UseCases\Friend\SearchFriendUseCase;
+use App\UseCases\Friend\UpdateFriendUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

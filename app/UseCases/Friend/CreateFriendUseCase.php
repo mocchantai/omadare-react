@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCases;
+namespace App\UseCases\Friend;
 
 use App\Models\Friend;
 use App\Repositories\FriendRepository;

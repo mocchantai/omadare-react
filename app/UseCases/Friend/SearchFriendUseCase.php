@@ -1,6 +1,7 @@
 <?php
 
-namespace App\UseCases;
+namespace App\UseCases\Friend;
+
 
 use App\Models\Friend;
 use App\Repositories\FriendRepository;
@@ -14,7 +15,7 @@ class SearchFriendUseCase
         $this->friendRepository = $friendRepository;
     }
 
-    public function execute(string $keyword): ?Friend
+    public function execute(string $keyword): \Illuminate\Database\Eloquent\Collection
     {
         // ここでバリデーションやビジネスロジックの処理を行います
 
