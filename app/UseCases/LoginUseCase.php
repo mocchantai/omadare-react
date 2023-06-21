@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginUseCase
 {
-    public function execute(string $email, string $password)
+    public function exec(string $email, string $password): array
     {
         $credentials = [
             'email' => $email,
@@ -16,6 +16,7 @@ class LoginUseCase
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('API Token')->plainTextToken;
+
             return [
                 'status' => 'success',
                 'message' => 'ログインに成功しました。',

@@ -23,7 +23,7 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $result = $this->loginUseCase->execute($email, $password);
+        $result = $this->loginUseCase->exec($email, $password);
 
         if ($result['status'] === 'success') {
             return response()->json($result);
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function logout(): JsonResponse
     {
-        $this->logoutUseCase->execute();
+        $this->logoutUseCase->exec();
 
         return response()->json([
             'status' => 'success',

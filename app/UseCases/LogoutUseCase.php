@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutUseCase
 {
-    public function execute()
+    public function exec()
     {
         if (Auth::user()) {
             Auth::user()->tokens()->delete();
