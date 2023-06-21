@@ -1,61 +1,33 @@
 <?php
 
+// UserController.php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\UseCases\UserRegistrationUseCase;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private UserRegistrationUseCase $userRegistrationUseCase;
+
+    public function __construct(UserRegistrationUseCase $userRegistrationUseCase)
     {
-        //
+        $this->userRegistrationUseCase = $userRegistrationUseCase;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): JsonResponse
     {
+        $validatedData = $request->validated();
 
-        Log::debug($request);
-        $user = User::create($request->all());
+        try {
+            $user = $this->userRegistrationUseCase->registerUser($validatedData);
 
-//        dd("今UserControllerのstoreメソッドを実行しています。");
-//        dd($user);
-
-        // Optionally, you can return a response or redirect to a different page
-        return $user
-            ? response()->json($user, 201)
-            : response()->json([], 500);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            return response()->json($user, 201);
+        } catch (\Exception $e) {
+            // エラーハンドリング
+            return response()->json(['message' => 'ユーザ登録に失敗しました。'], 500);
+        }
     }
 }
