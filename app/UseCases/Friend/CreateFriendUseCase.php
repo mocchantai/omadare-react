@@ -14,11 +14,13 @@ class CreateFriendUseCase
         $this->friendRepository = $friendRepository;
     }
 
-    public function execute(array $data): ?Friend
+    public function execute(array $data, int $userId): ?Friend
     {
         // ここでバリデーションやビジネスロジックの処理を行います
 
         // Friendの作成
+        $data['user_id'] = $userId;
         return $this->friendRepository->create($data);
     }
+
 }

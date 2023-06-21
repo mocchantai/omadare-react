@@ -12,6 +12,7 @@ use App\UseCases\Friend\SearchFriendUseCase;
 use App\UseCases\Friend\UpdateFriendUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
 {
@@ -43,7 +44,9 @@ class FriendController extends Controller
     {
         $friendData = $request->validated();
 
-        $friend = $this->createFriendUseCase->execute($friendData);
+        $userId = Auth::id();
+        $friend = $this->createFriendUseCase->execute($friendData, $userId);
+
 
         return $friend
             ? response()->json($friend, 201)

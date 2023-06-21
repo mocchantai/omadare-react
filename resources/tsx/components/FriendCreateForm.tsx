@@ -6,12 +6,12 @@ import {UserContext} from "../contexts/UserContext";
 
 
 const FriendCreateForm = ({onSubmit, onChangeFriendName, friendName, onChangeCommunityName, communityName, onChangeMemo, memo, onClick}: FriendCreateFormPropsType) => {
-    const user = useContext(UserContext);
+    // const user = useContext(UserContext);
 
 
     return (
         <form onSubmit={onSubmit} className="create-form">
-            <input type="hidden" name="user_id" value={user?.user?.id}/>
+            {/*<input type="hidden" name="user_id" value={user?.user?.id}/>*/}
             <label htmlFor="friend_name">名前</label>
             <input
                 onChange={onChangeFriendName}
