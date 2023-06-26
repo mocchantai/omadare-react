@@ -22,7 +22,10 @@ class StoreFriendRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'friend_name' => 'required|max:30'
+            'friend_name' => 'required|max:30',
+            'community_name' => 'max:50',
+            'memo' => 'max:255',
+            'user_id' => 'required'
         ];
     }
 }

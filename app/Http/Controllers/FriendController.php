@@ -13,6 +13,7 @@ use App\UseCases\Friend\UpdateFriendUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class FriendController extends Controller
 {
@@ -42,42 +43,45 @@ class FriendController extends Controller
 
     public function store(StoreFriendRequest $request): JsonResponse
     {
-        $friendData = $request->validated();
+        Log::info("StoreFriendRequest", ['request' => $request->all()]);
+        $validatedData = $request->validated();
 
-        $userId = Auth::id();
-        $friend = $this->createFriendUseCase->execute($friendData, $userId);
-
+        $friend = $this->createFriendUseCase->execute($validatedData);
 
         return $friend
             ? response()->json($friend, 201)
             : response()->json([], 500);
     }
 
-    public function update(UpdateFriendRequest $request, Friend $friend): JsonResponse
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateFriendRequest $request, Friend $friend)//DIでidに対応するFriendを取得
     {
-        $friendData = $request->validated();
+        $friend->friend_name = $request->friend_name;
+        $friend->community_name = $request->community_name;
+        $friend->memo = $request->memo;
 
-        $updatedFriend = $this->updateFriendUseCase->execute($friend, $friendData);
-
-        return $updatedFriend
-            ? response()->json($updatedFriend)
-            : response()->json([], 500);
-    }
-
-    public function destroy(Friend $friend): JsonResponse
-    {
-        $success = $this->deleteFriendUseCase->execute($friend);
-
-        return $success
+        return $friend->update()
             ? response()->json($friend)
             : response()->json([], 500);
     }
 
-    public function search(Request $request): JsonResponse
+    public function destroy(Friend $friend)
+    {
+        return $friend->delete()
+            ? response()->json($friend)
+            : response()->json([], 500);
+    }
+
+    public function search(Request $request)
     {
         $keyword = $request->input('keyword');
 
-        $friends = $this->searchFriendUseCase->execute($keyword);
+        $friends = Friend::where('friend_name','like', '%' .$keyword. '%')
+            ->OrWhere('community_name', 'like', '%' .$keyword. '%')
+            ->OrWhere('memo', 'like', '%' .$keyword. '%')
+            ->get();
 
         return $friends->isNotEmpty()
             ? response()->json($friends)

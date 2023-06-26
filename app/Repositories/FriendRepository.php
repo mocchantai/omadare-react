@@ -6,10 +6,11 @@ use App\Models\Friend;
 
 class FriendRepository
 {
-    public function create(array $data): ?Friend
+    public function create(array $friendData): ?Friend
     {
         // Friendの作成と保存
-        return Friend::create($data);
+        return Friend::create($friendData);
+
     }
 
     public function update(Friend $friend, array $data): bool

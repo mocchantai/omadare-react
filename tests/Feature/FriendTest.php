@@ -53,13 +53,13 @@ class FriendTest extends TestCase
 //    }
 
 
-    public function test_friend_store_with_community(): void
+    public function test_friend_store_with_community($user): void
     {
         $data = [
             'friend_name' => 'テストさん',
             'community_name' => 'テストコミュニティ',
             'memo' => 'これはテストです。',
-            'user_id' => 1, // テスト用の適切なユーザーIDを設定する
+            'user_id' => $user->id, // テスト用の適切なユーザーIDを設定する
         ];
 
 
