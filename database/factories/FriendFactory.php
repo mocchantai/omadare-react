@@ -7,7 +7,7 @@ use App\Models\Friend;
 use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Friend>
+ * @extends Friend
  */
 class FriendFactory extends Factory
 {

@@ -113,7 +113,68 @@ class FriendRepositoryTest extends TestCase
         $this->assertDatabaseMissing('friends', ['id' => $friend->id]);
     }
 
+    public function test_search_friend_repository()
+    {
+        // Arrange
+        Friend::factory()
+            ->count(10)
+            ->create()
+            ->each(function ($friend, $index) {
+                if ($index < 5) {
+                    $friend->friend_name = 'テストさん';
+                    $friend->save();
+                }
+            });
 
+        $keyword = 'テスト';
+
+        // Act
+        $repository = new FriendRepository();
+        $searchedFriends = $repository->search($keyword);
+
+        // Assert
+        $this->assertEquals(5, $searchedFriends->count());
+    }
+
+    public function test_search_friend_repository_with_no_searched_friends()
+    {
+        // Arrange
+        Friend::factory()
+            ->count(10)
+            ->state([
+                'friend_name' => '名前'
+            ])
+            ->create();
+
+        $keyword = 'テスト';
+
+        // Act
+        $repository = new FriendRepository();
+        $searchedFriends = $repository->search($keyword);
+
+        // Assert
+        $this->assertEquals(0, $searchedFriends->count());
+    }
+
+    public function test_search_friend_repository_with_no_keyword()
+    {
+        // Arrange
+        Friend::factory()
+            ->count(10)
+            ->state([
+                'friend_name' => '名前'
+            ])
+            ->create();
+
+        $keyword = '';
+
+        // Act
+        $repository = new FriendRepository();
+        $searchedFriends = $repository->search($keyword);
+
+        // Assert
+        $this->assertEquals(10, $searchedFriends->count());
+    }
 
 
 }
