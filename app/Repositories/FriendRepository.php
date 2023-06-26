@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Friend;
+use Illuminate\Database\Eloquent\Collection;
 
 class FriendRepository
 {
@@ -21,7 +22,7 @@ class FriendRepository
         return $friend->delete();
     }
 
-    public function search(string $keyword)
+    public function search(string $keyword): Collection
     {
         return Friend::where('friend_name', 'like', '%' . $keyword . '%')
             ->orWhere('community_name', 'like', '%' . $keyword . '%')
