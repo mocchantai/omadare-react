@@ -9,7 +9,6 @@ class FriendRepository
     public function create(array $friendData): ?Friend
     {
         return Friend::create($friendData);
-
     }
 
     public function update(Friend $friend, array $data): bool
