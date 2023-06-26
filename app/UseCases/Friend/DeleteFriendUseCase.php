@@ -17,9 +17,6 @@ class DeleteFriendUseCase
 
     public function execute(Friend $friend): bool
     {
-        // ここでバリデーションやビジネスロジックの処理を行います
-
-        // Friendの作成
         return $this->friendRepository->delete($friend);
     }
 }

@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Psy\Util\Json;
 
 class FriendController extends Controller
 {
@@ -55,7 +56,7 @@ class FriendController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFriendRequest $request, Friend $friend)
+    public function update(UpdateFriendRequest $request, Friend $friend): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -66,14 +67,16 @@ class FriendController extends Controller
             : response()->json([], 500);
     }
 
-    public function destroy(Friend $friend)
+    public function destroy(Friend $friend): JsonResponse
     {
-        return $friend->delete()
+        $friend = $this->deleteFriendUseCase->execute($friend);
+
+        return $friend
             ? response()->json($friend)
             : response()->json([], 500);
     }
 
-    public function search(Request $request)
+    public function search(Request $request): JsonResponse
     {
         $keyword = $request->input('keyword');
 
