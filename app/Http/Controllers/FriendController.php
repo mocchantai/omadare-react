@@ -35,7 +35,7 @@ class FriendController extends Controller
         $this->searchFriendUseCase = $searchFriendUseCase;
     }
 
-    public function index(Request $request): JsonResponse
+    public function index(): JsonResponse
     {
         $friends = $this->searchFriendUseCase->execute('');
 
@@ -80,10 +80,7 @@ class FriendController extends Controller
     {
         $keyword = $request->input('keyword');
 
-        $friends = Friend::where('friend_name','like', '%' .$keyword. '%')
-            ->OrWhere('community_name', 'like', '%' .$keyword. '%')
-            ->OrWhere('memo', 'like', '%' .$keyword. '%')
-            ->get();
+        $friends = $this->searchFriendUseCase->execute($keyword);
 
         return $friends->isNotEmpty()
             ? response()->json($friends)

@@ -3,8 +3,8 @@
 namespace App\UseCases\Friend;
 
 
-use App\Models\Friend;
 use App\Repositories\FriendRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class SearchFriendUseCase
 {
@@ -15,11 +15,8 @@ class SearchFriendUseCase
         $this->friendRepository = $friendRepository;
     }
 
-    public function execute(string $keyword): \Illuminate\Database\Eloquent\Collection
+    public function execute(string $keyword): Collection
     {
-        // ここでバリデーションやビジネスロジックの処理を行います
-
-        // Friendの作成
         return $this->friendRepository->search($keyword);
     }
 }
