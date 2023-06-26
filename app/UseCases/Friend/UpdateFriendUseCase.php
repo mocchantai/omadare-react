@@ -17,8 +17,6 @@ class UpdateFriendUseCase
 
     public function execute(Friend $friend, array $data): ?Friend
     {
-        // Friendの更新
-        Log::alert("UseCase使ってるね");
         $success = $this->friendRepository->update($friend, $data);
 
         return $success ? $friend : null;

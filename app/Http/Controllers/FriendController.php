@@ -43,7 +43,6 @@ class FriendController extends Controller
 
     public function store(StoreFriendRequest $request): JsonResponse
     {
-        Log::info("StoreFriendRequest", ['request' => $request->all()]);
         $validatedData = $request->validated();
 
         $friend = $this->createFriendUseCase->execute($validatedData);
