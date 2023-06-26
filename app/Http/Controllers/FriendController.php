@@ -56,13 +56,13 @@ class FriendController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFriendRequest $request, Friend $friend)//DIでidに対応するFriendを取得
+    public function update(UpdateFriendRequest $request, Friend $friend)
     {
-        $friend->friend_name = $request->friend_name;
-        $friend->community_name = $request->community_name;
-        $friend->memo = $request->memo;
+        $validatedData = $request->validated();
 
-        return $friend->update()
+        $friend = $this->updateFriendUseCase->execute($friend, $validatedData);
+
+        return $friend
             ? response()->json($friend)
             : response()->json([], 500);
     }
