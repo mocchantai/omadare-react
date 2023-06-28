@@ -24,7 +24,7 @@ class FriendRepositoryTest extends TestCase
     }
 
 
-    public function test_create_friend_repository()
+    public function test_create_friend_repository(): void
     {
         // Arrange: Prepare the necessary data for the test
         $friendData = [
@@ -46,7 +46,7 @@ class FriendRepositoryTest extends TestCase
         $this->assertEquals($friendData['user_id'], $createdFriend['user_id']);
     }
 
-    public function test_create_friend_repository_without_memo_and_community_name()
+    public function test_create_friend_repository_without_memo_and_community_name(): void
     {
         // Arrange
         $friendData = [
@@ -68,7 +68,7 @@ class FriendRepositoryTest extends TestCase
         $this->assertEquals($friendData['user_id'], $createdFriend['user_id']);
     }
 
-    public function test_update_friend_repository()
+    public function test_update_friend_repository(): void
     {
         // Arrange
         $friend = Friend::factory()->create();
@@ -97,7 +97,7 @@ class FriendRepositoryTest extends TestCase
         $this->assertEquals($friendData['user_id'], $friend->user_id);
     }
 
-    public function test_delete_friend_repository()
+    public function test_delete_friend_repository(): void
     {
         // Arrange
         $friend = Friend::factory()->create();
@@ -113,7 +113,7 @@ class FriendRepositoryTest extends TestCase
         $this->assertDatabaseMissing('friends', ['id' => $friend->id]);
     }
 
-    public function test_search_friend_repository()
+    public function test_search_friend_repository(): void
     {
         // Arrange
         Friend::factory()
@@ -136,7 +136,7 @@ class FriendRepositoryTest extends TestCase
         $this->assertEquals(5, $searchedFriends->count());
     }
 
-    public function test_search_friend_repository_with_no_searched_friends()
+    public function test_search_friend_repository_with_no_searched_friends(): void
     {
         // Arrange
         Friend::factory()
