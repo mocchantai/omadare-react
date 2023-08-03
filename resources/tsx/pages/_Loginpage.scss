@@ -1,0 +1,73 @@
+$primary_color: #FF9E9E;
+$background_color: #000;
+$input_color: #fff;
+$placeholder_color: #ccc;
+
+.login-form {
+    width: 400px;
+    padding: 40px 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: $background_color;
+    text-align: center;
+
+    .form-header {
+        &__title {
+            color: $input_color;
+            font-weight: 500;
+        }
+
+        &__description {
+            font-size: 10px;
+            color: $input_color;
+            font-weight: 500;
+        }
+    }
+
+    .form-contents {
+        &__input {
+            background: none;
+            display: block;
+            margin: 20px auto;
+            padding: 15px 10px;
+            width: 200px;
+            outline: none;
+            border-radius: 24px;
+            transition: 0.25s;
+            text-align: center;
+            color: $input_color;
+            border: 2px solid $primary_color;
+
+            &:focus {
+                width: 280px;
+                background-color: #f0f8ff;
+                color: $background_color;
+                &::placeholder {
+                    color: $placeholder_color;
+                }
+            }
+
+            &--submit {
+                background: none;
+                display: block;
+                margin: 20px auto;
+                padding: 15px 10px;
+                width: 200px;
+                outline: none;
+                color: $input_color;
+                border-radius: 25px;
+                transition: 0.25s;
+                text-align: center;
+                cursor: pointer;
+                border: 2px solid $placeholder_color;
+
+                &:hover {
+                    background-color: $primary_color;
+                    border: 2px solid $primary_color;
+                }
+            }
+        }
+    }
+}

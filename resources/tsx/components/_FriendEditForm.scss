@@ -1,0 +1,76 @@
+$primary_color: #FF9E9E;
+
+.create_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    &__friend_name {
+        border: none;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        padding: 4px 8px;
+    }
+
+    &__memo {
+        border: none;
+        height: 120px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        padding: 4px 8px;
+    }
+    .button_container {
+        display: flex;
+        &__submit_button,
+        &__destroy_button {
+            background-color: $primary_color;
+            width: 40%;
+            height: 40px;
+            margin: 0 auto 8px auto;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($primary_color, 10%);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+
+    &__close_button {
+        background-color: $primary_color;
+        width: 40%;
+        height: 40px;
+        margin: 0 auto 8px auto;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($primary_color, 10%);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.create_form label {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.create_form textarea {
+    resize: vertical;
+}

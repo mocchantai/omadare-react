@@ -1,0 +1,40 @@
+$primary_color: #FF9E9E;
+$button_icon_color: #FFF; // ボタンのアイコンの色
+
+.modal-open-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    position: fixed;
+    left: 70%;
+    top: 70%;
+    z-index: 2;
+    background-color: $primary_color;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        background-color: darken($primary_color, 10%);
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+        -4px -4px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    &::before {
+        content: '+';
+        font-size: 60px;
+        color: $button_icon_color;
+    }
+}
